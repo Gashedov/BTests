@@ -1,0 +1,13 @@
+.DS_Store
+xcuserdata
+fastlane/report.xml
+fastlane/README.md
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+.idea
+Pods
+Podfile.lock
+
+*.xcodeproj
+*.xcworkspace
