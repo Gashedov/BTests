@@ -12,9 +12,8 @@ import Rswift
 class WelcomeScreenViewController: UIViewController {
 
     // MARK: - Properties
-    let backgroundImageView = UIImageView()
-    let titleLabel = UILabel()
-    let confirmButton = UIButton()
+    private let backgroundImageView = UIImageView()
+    private let titleLabel = UILabel()
 
     // MARK: - Life cucle methods
     override func loadView() {
@@ -31,20 +30,16 @@ class WelcomeScreenViewController: UIViewController {
             $0.centerX.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(100)
         }
-
-        view.addSubview(confirmButton)
-        confirmButton.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(40)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(200)
-            $0.height.equalTo(60)
-        }
-
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     // MARK: - Private methods
@@ -53,11 +48,16 @@ class WelcomeScreenViewController: UIViewController {
 
         titleLabel.font = .boldSystemFont(ofSize: 24)
         titleLabel.text = "Welcome to B`Test"
+        titleLabel.numberOfLines = 2
+        titleLabel.textAlignment = .center
 
-        confirmButton.setTitle("GO", for: .normal)
-        confirmButton.backgroundColor = .cyan
-        confirmButton.layer.cornerRadius = 30
-    
+        view.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(openNext))
+        )
+    }
+
+    @objc private func openNext() {
+        navigationController?.pushViewController(CategoryListView(), animated: true)
     }
 }
 

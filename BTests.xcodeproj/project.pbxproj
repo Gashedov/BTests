@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		271579BA262C59B600A152CF /* localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 271579BC262C59B600A152CF /* localizable.strings */; };
 		271746F92612182B003FA54F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271746F82612182B003FA54F /* R.generated.swift */; };
 		27564AC82610C64900754BA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27564AC72610C64900754BA2 /* AppDelegate.swift */; };
 		27564ACC2610C64900754BA2 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27564ACB2610C64900754BA2 /* WelcomeScreenViewController.swift */; };
@@ -15,6 +16,10 @@
 		27564AD42610C64A00754BA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27564AD22610C64A00754BA2 /* LaunchScreen.storyboard */; };
 		27564ADF2610C64A00754BA2 /* BTestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27564ADE2610C64A00754BA2 /* BTestsTests.swift */; };
 		27564AEA2610C64A00754BA2 /* BTestsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27564AE92610C64A00754BA2 /* BTestsUITests.swift */; };
+		276B6A072614ECB80008A72E /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276B6A062614ECB80008A72E /* CategoryListView.swift */; };
+		27A3E6F4263B1CCE001509C8 /* TestDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E6F3263B1CCE001509C8 /* TestDescriptionView.swift */; };
+		27B1DB2126260DB20082D58A /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B1DB2026260DB20082D58A /* CardStackView.swift */; };
+		27B1DB2626260E810082D58A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B1DB2526260E810082D58A /* CardView.swift */; };
 		42A9F661C5F2769604CFAE18 /* libPods-BTestsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AAA1E1AA055E39538A7FCD /* libPods-BTestsTests.a */; };
 		AC05F06B91B7338C86E132C8 /* libPods-BTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D1CEAA19F1B3747BD9B27F /* libPods-BTests.a */; };
 		EF0E343A22501E777C32D4E0 /* libPods-BTests-BTestsUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C2435C76B6B18ADCFB88C4 /* libPods-BTests-BTestsUITests.a */; };
@@ -39,6 +44,10 @@
 
 /* Begin PBXFileReference section */
 		0D88B071E4FE807E65959538 /* Pods-BTests-BTestsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTests-BTestsUITests.release.xcconfig"; path = "Target Support Files/Pods-BTests-BTestsUITests/Pods-BTests-BTestsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		271579BB262C59B600A152CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/localizable.strings; sourceTree = "<group>"; };
+		271579C6262C5AB500A152CF /* ru-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ru-BY"; path = "ru-BY.lproj/Main.strings"; sourceTree = "<group>"; };
+		271579C7262C5AB500A152CF /* ru-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ru-BY"; path = "ru-BY.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		271579C8262C5AB600A152CF /* ru-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ru-BY"; path = "ru-BY.lproj/localizable.strings"; sourceTree = "<group>"; };
 		271746F82612182B003FA54F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		27564AC42610C64900754BA2 /* BTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27564AC72610C64900754BA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +62,10 @@
 		27564AE52610C64A00754BA2 /* BTestsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTestsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27564AE92610C64A00754BA2 /* BTestsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTestsUITests.swift; sourceTree = "<group>"; };
 		27564AEB2610C64A00754BA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		276B6A062614ECB80008A72E /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
+		27A3E6F3263B1CCE001509C8 /* TestDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDescriptionView.swift; sourceTree = "<group>"; };
+		27B1DB2026260DB20082D58A /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
+		27B1DB2526260E810082D58A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		45C2435C76B6B18ADCFB88C4 /* libPods-BTests-BTestsUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BTests-BTestsUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F2E12E90F50A5758B42A3EF /* Pods-BTestsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTestsTests.release.xcconfig"; path = "Target Support Files/Pods-BTestsTests/Pods-BTestsTests.release.xcconfig"; sourceTree = "<group>"; };
 		6569BE1160D8EF95E62414E4 /* Pods-BTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTests.release.xcconfig"; path = "Target Support Files/Pods-BTests/Pods-BTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +107,7 @@
 		271746FD26121B3B003FA54F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				27B1DB1C26260D9B0082D58A /* Common */,
 				271746FE26121B4C003FA54F /* Scenes */,
 			);
 			path = Presentation;
@@ -102,6 +116,8 @@
 		271746FE26121B4C003FA54F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				27A3E6F2263B1ABD001509C8 /* TestDescription */,
+				276B6A052614EC300008A72E /* CategoryList */,
 				271746FF26121B57003FA54F /* WelcomeScreen */,
 			);
 			path = Scenes;
@@ -147,6 +163,7 @@
 				27564AD22610C64A00754BA2 /* LaunchScreen.storyboard */,
 				271746F82612182B003FA54F /* R.generated.swift */,
 				27564AD52610C64A00754BA2 /* Info.plist */,
+				271579BC262C59B600A152CF /* localizable.strings */,
 			);
 			path = BTests;
 			sourceTree = "<group>";
@@ -167,6 +184,31 @@
 				27564AEB2610C64A00754BA2 /* Info.plist */,
 			);
 			path = BTestsUITests;
+			sourceTree = "<group>";
+		};
+		276B6A052614EC300008A72E /* CategoryList */ = {
+			isa = PBXGroup;
+			children = (
+				276B6A062614ECB80008A72E /* CategoryListView.swift */,
+			);
+			path = CategoryList;
+			sourceTree = "<group>";
+		};
+		27A3E6F2263B1ABD001509C8 /* TestDescription */ = {
+			isa = PBXGroup;
+			children = (
+				27A3E6F3263B1CCE001509C8 /* TestDescriptionView.swift */,
+			);
+			path = TestDescription;
+			sourceTree = "<group>";
+		};
+		27B1DB1C26260D9B0082D58A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				27B1DB2026260DB20082D58A /* CardStackView.swift */,
+				27B1DB2526260E810082D58A /* CardView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		E4B20FB140C0A6DB251B202E /* Pods */ = {
@@ -281,6 +323,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"ru-BY",
 			);
 			mainGroup = 27564ABB2610C64900754BA2;
 			productRefGroup = 27564AC52610C64900754BA2 /* Products */;
@@ -300,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27564AD42610C64A00754BA2 /* LaunchScreen.storyboard in Resources */,
+				271579BA262C59B600A152CF /* localizable.strings in Resources */,
 				27564AD12610C64A00754BA2 /* Assets.xcassets in Resources */,
 				27564ACF2610C64900754BA2 /* Main.storyboard in Resources */,
 			);
@@ -414,8 +458,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27B1DB2126260DB20082D58A /* CardStackView.swift in Sources */,
 				27564ACC2610C64900754BA2 /* WelcomeScreenViewController.swift in Sources */,
 				27564AC82610C64900754BA2 /* AppDelegate.swift in Sources */,
+				27A3E6F4263B1CCE001509C8 /* TestDescriptionView.swift in Sources */,
+				276B6A072614ECB80008A72E /* CategoryListView.swift in Sources */,
+				27B1DB2626260E810082D58A /* CardView.swift in Sources */,
 				271746F92612182B003FA54F /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,10 +500,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		271579BC262C59B600A152CF /* localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				271579BB262C59B600A152CF /* en */,
+				271579C8262C5AB600A152CF /* ru-BY */,
+			);
+			name = localizable.strings;
+			sourceTree = "<group>";
+		};
 		27564ACD2610C64900754BA2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				27564ACE2610C64900754BA2 /* Base */,
+				271579C6262C5AB500A152CF /* ru-BY */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -464,6 +522,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				27564AD32610C64A00754BA2 /* Base */,
+				271579C7262C5AB500A152CF /* ru-BY */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -475,6 +534,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -536,6 +596,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

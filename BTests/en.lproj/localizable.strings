@@ -1,0 +1,11 @@
+/* 
+  localizable.strings
+  BTests
+
+  Created by Artem Gorshkov on 18.04.21.
+*/
+
+"test" = "Test";
+"about" = "About";
+"search" = "Search";
+"creators" = "Creators";
