@@ -13,7 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let controller = WelcomeScreenViewController()
+        var controller: UIViewController = CategoryListView()
+        if !UserDefaultsService.appDidRunBefore {
+            controller = WelcomeScreenViewController()
+            UserDefaultsService.appDidRunBefore = true
+        }
         window?.rootViewController = UINavigationController(rootViewController: controller)
         window?.makeKeyAndVisible()
         return true

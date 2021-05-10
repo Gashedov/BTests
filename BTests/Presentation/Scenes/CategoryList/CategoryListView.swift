@@ -104,7 +104,7 @@ class CategoryListView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        self.trayView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(dragView)))
+        trayView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(dragView)))
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -127,6 +127,7 @@ class CategoryListView: UIViewController {
         testButton.contentVerticalAlignment = .fill
         testButton.contentHorizontalAlignment = .fill
         testButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        testButton.addTarget(self, action: #selector(testButtonAction), for: .touchUpInside)
 
         testLabel.text = R.string.localizable.test()
 
@@ -153,6 +154,10 @@ class CategoryListView: UIViewController {
         infoButton.contentHorizontalAlignment = .fill
 
         infoLabel.text = R.string.localizable.about()
+    }
+
+    @objc private func testButtonAction() {
+        navigationController?.pushViewController(TestDescriptionView(), animated: true)
     }
 
     @objc private func dragView(gesture: UIPanGestureRecognizer) {

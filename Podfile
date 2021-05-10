@@ -7,10 +7,10 @@ target 'BTests' do
   pod 'RxSwift', '5.1.1'
   pod 'RxCocoa', '5.1.1'
   pod 'R.swift', '5.1.0'
+  pod "UPCarouselFlowLayout"
 
-  target 'BTestsTests' do
-    inherit! :search_paths
-
+target 'BTestsTests' do
+  inherit! :search_paths
     pod 'Quick', '3.0.0'
     pod 'Nimble', '9.0.0'
     pod 'RxBlocking', '5.1.1'
