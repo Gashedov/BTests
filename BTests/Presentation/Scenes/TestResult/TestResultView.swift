@@ -29,18 +29,25 @@ class TestResultView: UIViewController {
         view.addSubview(resultLabel)
         resultLabel.snp.makeConstraints {
             $0.top.equalTo(resultTitle.snp.bottom).offset(10)
-            $0.leading.equalToSuperview().inset(20)
+            $0.leading.equalToSuperview().inset(40)
         }
 
         view.addSubview(logoImageView)
         logoImageView.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(resultLabel.snp.bottom).offset(80)
             $0.size.equalTo(180)
+        }
+
+        view.addSubview(infoButton)
+        infoButton.snp.makeConstraints {
+            $0.bottom.trailing.equalTo(logoImageView)
+            $0.size.equalTo(60)
         }
 
         view.addSubview(nextButton)
         nextButton.snp.makeConstraints {
-            $0.top.equalTo(logoImageView.snp.bottom).offset(20)
+            $0.top.equalTo(logoImageView.snp.bottom).offset(60)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(40)
         }
@@ -72,12 +79,17 @@ class TestResultView: UIViewController {
         resultTitle.text = "Result:"
         resultTitle.textAlignment = .center
 
-        resultLabel.font = .systemFont(ofSize: 14)
+        resultLabel.font = .systemFont(ofSize: 18)
         resultLabel.text = "<Test result>"
 
         logoImageView.backgroundColor = .darkGray
+        logoImageView.layer.cornerRadius = 90
 
-        infoButton.backgroundColor = .green
+        infoButton.setImage(R.image.about(), for: .normal)
+        infoButton.layer.cornerRadius = 30
+        infoButton.contentVerticalAlignment = .fill
+        infoButton.contentHorizontalAlignment = .fill
+        infoButton.tintColor = .white
 
         nextButton.setTitle("Next test", for: .normal)
         nextButton.addTarget(self, action: #selector(openNext), for: .touchUpInside)
@@ -90,7 +102,7 @@ class TestResultView: UIViewController {
     }
 
     @objc private func openNext() {
-        navigationController?.pushViewController(TestView(), animated: true)
+        navigationController?.pushViewController(TestDescriptionView(), animated: true)
     }
 
     @objc private func openMenu() {

@@ -37,11 +37,6 @@ class WelcomeScreenViewController: UIViewController {
         setupUI()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-
     // MARK: - Private methods
     private func setupUI() {
         backgroundImageView.backgroundColor = .lightGray
@@ -57,7 +52,10 @@ class WelcomeScreenViewController: UIViewController {
     }
 
     @objc private func openNext() {
-        navigationController?.pushViewController(CategoryListView(), animated: true)
+        let authorizationView = AuthorizationView()
+        authorizationView.isModalInPresentation = true
+        authorizationView.modalPresentationStyle = .fullScreen
+        present(authorizationView, animated: true)
     }
 }
 

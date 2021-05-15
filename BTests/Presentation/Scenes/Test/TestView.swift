@@ -97,11 +97,6 @@ class TestView: UIViewController {
     }
 
     @objc private func completeTest() {
-//        guard var viewControllers = navigationController?.viewControllers else {
-//            return
-//        }
-//        viewControllers.removeAll(where: { $0 == self })
-//        navigationController?.setViewControllers(viewControllers, animated: false)
         navigationController?.pushViewController(TestResultView(), animated: true)
     }
 }
@@ -123,7 +118,7 @@ extension TestView: UICollectionViewDataSource {
             return cell
         }
         let cell: CardCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.setupValues(question: "Ты пидор епта?", answers: ["DA", "NET", "А Может ты пидар?"])
+        cell.setupValues(question: "<Question text>", answers: ["<answer one>", "<answer two>", "<answer tree>"])
         return cell
     }
 }
