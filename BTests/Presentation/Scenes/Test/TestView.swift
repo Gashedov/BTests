@@ -87,7 +87,7 @@ class TestView: UIViewController {
         cardCollectionView.delegate = self
         cardCollectionView.dataSource = self
         cardCollectionView.showsHorizontalScrollIndicator = false
-        cardCollectionView.register(CardCollectionViewCell.self)
+        cardCollectionView.register(QuestionCardCollectionViewCell.self)
         cardCollectionView.register(LastCardCollectionViewCell.self)
 
         let layout = cardCollectionView.collectionViewLayout as? UPCarouselFlowLayout
@@ -117,7 +117,7 @@ extension TestView: UICollectionViewDataSource {
             cell.resultButton.addTarget(self, action: #selector(completeTest), for: .touchUpInside)
             return cell
         }
-        let cell: CardCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let cell: QuestionCardCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.setupValues(question: "<Question text>", answers: ["<answer one>", "<answer two>", "<answer tree>"])
         return cell
     }

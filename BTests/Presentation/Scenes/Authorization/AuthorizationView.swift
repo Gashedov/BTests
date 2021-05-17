@@ -98,7 +98,7 @@ class AuthorizationView: UIViewController {
 
     // MARK: - Private methods
     @objc private func skip() {
-        let navigation = UINavigationController(rootViewController: CategoryListView())
+        let navigation = UINavigationController(rootViewController:  MainScreenView())
         navigation.isModalInPresentation = true
         navigation.modalPresentationStyle = .fullScreen
         present(navigation, animated: true)

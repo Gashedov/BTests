@@ -157,7 +157,7 @@ class CategoryListView: UIViewController {
     }
 
     @objc private func testButtonAction() {
-        navigationController?.pushViewController(TestDescriptionView(), animated: true)
+        navigationController?.pushViewController(TestsListView(), animated: true)
     }
 
     @objc private func dragView(gesture: UIPanGestureRecognizer) {

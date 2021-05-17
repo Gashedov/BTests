@@ -29,7 +29,12 @@
 		27C4BEC52645695200618282 /* TestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4BEC42645695200618282 /* TestResultView.swift */; };
 		27DD0423264983CA00E9C265 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD0422264983CA00E9C265 /* AuthorizationView.swift */; };
 		27ED5BAF263EFC1900D07866 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED5BAE263EFC1900D07866 /* TestView.swift */; };
-		27ED5BB5263EFDD100D07866 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED5BB4263EFDD100D07866 /* CardCollectionViewCell.swift */; };
+		27ED5BB5263EFDD100D07866 /* QuestionCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED5BB4263EFDD100D07866 /* QuestionCardCollectionViewCell.swift */; };
+		27FD0454264FFD7E0045ABA6 /* TestsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD0453264FFD7E0045ABA6 /* TestsListView.swift */; };
+		27FD0456264FFF860045ABA6 /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD0455264FFF860045ABA6 /* TestTableViewCell.swift */; };
+		27FD0458265003D50045ABA6 /* UITableView+Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD0457265003D50045ABA6 /* UITableView+Generics.swift */; };
+		27FD045B2650487D0045ABA6 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD045A2650487D0045ABA6 /* MainScreenView.swift */; };
+		27FD045D265051AA0045ABA6 /* FacultyCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD045C265051AA0045ABA6 /* FacultyCardCollectionViewCell.swift */; };
 		42A9F661C5F2769604CFAE18 /* libPods-BTestsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AAA1E1AA055E39538A7FCD /* libPods-BTestsTests.a */; };
 		AC05F06B91B7338C86E132C8 /* libPods-BTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D1CEAA19F1B3747BD9B27F /* libPods-BTests.a */; };
 		EF0E343A22501E777C32D4E0 /* libPods-BTests-BTestsUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C2435C76B6B18ADCFB88C4 /* libPods-BTests-BTestsUITests.a */; };
@@ -85,7 +90,12 @@
 		27C4BEC42645695200618282 /* TestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultView.swift; sourceTree = "<group>"; };
 		27DD0422264983CA00E9C265 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		27ED5BAE263EFC1900D07866 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
-		27ED5BB4263EFDD100D07866 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		27ED5BB4263EFDD100D07866 /* QuestionCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		27FD0453264FFD7E0045ABA6 /* TestsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsListView.swift; sourceTree = "<group>"; };
+		27FD0455264FFF860045ABA6 /* TestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
+		27FD0457265003D50045ABA6 /* UITableView+Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Generics.swift"; sourceTree = "<group>"; };
+		27FD045A2650487D0045ABA6 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
+		27FD045C265051AA0045ABA6 /* FacultyCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		45C2435C76B6B18ADCFB88C4 /* libPods-BTests-BTestsUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BTests-BTestsUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F2E12E90F50A5758B42A3EF /* Pods-BTestsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTestsTests.release.xcconfig"; path = "Target Support Files/Pods-BTestsTests/Pods-BTestsTests.release.xcconfig"; sourceTree = "<group>"; };
 		6569BE1160D8EF95E62414E4 /* Pods-BTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTests.release.xcconfig"; path = "Target Support Files/Pods-BTests/Pods-BTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +146,8 @@
 		271746FE26121B4C003FA54F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				27FD0459265047420045ABA6 /* MainScreen */,
+				27FD0452264FFD680045ABA6 /* TestsList */,
 				27C4BEC32645685000618282 /* TestResult */,
 				27DD04242649840800E9C265 /* Authorization */,
 				27A3E6F8263B24D8001509C8 /* Test */,
@@ -230,7 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				27ED5BAE263EFC1900D07866 /* TestView.swift */,
-				27ED5BB4263EFDD100D07866 /* CardCollectionViewCell.swift */,
+				27ED5BB4263EFDD100D07866 /* QuestionCardCollectionViewCell.swift */,
 				27AC78712649314E00B769BA /* LastCardCollectionViewCell.swift */,
 			);
 			path = Test;
@@ -242,6 +254,7 @@
 				27AC78BA2649367600B769BA /* ReuseIdentifiable.swift */,
 				27AC78C2264936B200B769BA /* UICollectionView+Generics.swift */,
 				2783C9FA2649693A00947B3F /* UserDefaultsService.swift */,
+				27FD0457265003D50045ABA6 /* UITableView+Generics.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -271,6 +284,24 @@
 				27DD0422264983CA00E9C265 /* AuthorizationView.swift */,
 			);
 			path = Authorization;
+			sourceTree = "<group>";
+		};
+		27FD0452264FFD680045ABA6 /* TestsList */ = {
+			isa = PBXGroup;
+			children = (
+				27FD0453264FFD7E0045ABA6 /* TestsListView.swift */,
+				27FD0455264FFF860045ABA6 /* TestTableViewCell.swift */,
+			);
+			path = TestsList;
+			sourceTree = "<group>";
+		};
+		27FD0459265047420045ABA6 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				27FD045A2650487D0045ABA6 /* MainScreenView.swift */,
+				27FD045C265051AA0045ABA6 /* FacultyCardCollectionViewCell.swift */,
+			);
+			path = MainScreen;
 			sourceTree = "<group>";
 		};
 		E4B20FB140C0A6DB251B202E /* Pods */ = {
@@ -525,14 +556,19 @@
 				27DD0423264983CA00E9C265 /* AuthorizationView.swift in Sources */,
 				27564ACC2610C64900754BA2 /* WelcomeScreenViewController.swift in Sources */,
 				27564AC82610C64900754BA2 /* AppDelegate.swift in Sources */,
-				27ED5BB5263EFDD100D07866 /* CardCollectionViewCell.swift in Sources */,
+				27FD0458265003D50045ABA6 /* UITableView+Generics.swift in Sources */,
+				27ED5BB5263EFDD100D07866 /* QuestionCardCollectionViewCell.swift in Sources */,
 				27A3E6F4263B1CCE001509C8 /* TestDescriptionView.swift in Sources */,
 				27AC78BB2649367600B769BA /* ReuseIdentifiable.swift in Sources */,
+				27FD0454264FFD7E0045ABA6 /* TestsListView.swift in Sources */,
+				27FD0456264FFF860045ABA6 /* TestTableViewCell.swift in Sources */,
 				276B6A072614ECB80008A72E /* CategoryListView.swift in Sources */,
 				27AC78C3264936B200B769BA /* UICollectionView+Generics.swift in Sources */,
 				27B1DB2626260E810082D58A /* CardView.swift in Sources */,
 				27ED5BAF263EFC1900D07866 /* TestView.swift in Sources */,
+				27FD045D265051AA0045ABA6 /* FacultyCardCollectionViewCell.swift in Sources */,
 				27866408264C6CA100E9988E /* FloatLabeledTextField.swift in Sources */,
+				27FD045B2650487D0045ABA6 /* MainScreenView.swift in Sources */,
 				271746F92612182B003FA54F /* R.generated.swift in Sources */,
 				2783C9FB2649693A00947B3F /* UserDefaultsService.swift in Sources */,
 				27A3E702263B27A7001509C8 /* TestCardView.swift in Sources */,

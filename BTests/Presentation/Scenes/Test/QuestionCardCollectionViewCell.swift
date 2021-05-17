@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
+class QuestionCardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
     private let cardView = UIView()
     private let questionLabel = UILabel()
     private let answersStackView = UIStackView()
