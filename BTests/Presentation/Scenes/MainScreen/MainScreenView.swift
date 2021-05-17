@@ -11,10 +11,8 @@ import UPCarouselFlowLayout
 class MainScreenView: UIViewController {
 
     // MARK: - Properties
-    private let cardCollectionView = UICollectionView(
-        frame: .zero,
-        collectionViewLayout: UPCarouselFlowLayout()
-    )
+    private let cardTableView = UITableView(frame: .zero, style: .grouped)
+    private let testButton = UIButton()
 
     // MARK: - Life cucle methods
     override func loadView() {
@@ -22,9 +20,15 @@ class MainScreenView: UIViewController {
 
         view.backgroundColor = .lightGray
 
-        view.addSubview(cardCollectionView)
-        cardCollectionView.snp.makeConstraints {
+        view.addSubview(cardTableView)
+        cardTableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+
+        view.addSubview(testButton)
+        testButton.snp.makeConstraints {
+            $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(60)
         }
     }
 
@@ -35,87 +39,53 @@ class MainScreenView: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     //MARK: - Private methods
     private func setupUI() {
-        cardCollectionView.backgroundColor = .clear
-        cardCollectionView.delegate = self
-        cardCollectionView.dataSource = self
-        cardCollectionView.showsHorizontalScrollIndicator = false
-        cardCollectionView.register(FacultyCardCollectionViewCell.self)
-        cardCollectionView.registerHeaderView(SearchCollectionViewHeader.self)
+        cardTableView.separatorStyle = .none
+        cardTableView.backgroundColor = .clear
+        cardTableView.rowHeight = 400
+        cardTableView.delegate = self
+        cardTableView.dataSource = self
+        cardTableView.showsHorizontalScrollIndicator = false
+        cardTableView.register(FacultyCardTableViewCell.self)
+        cardTableView.registerHeaderFooter(SearchTableViewHeader.self)
 
-        let layout = cardCollectionView.collectionViewLayout as? UPCarouselFlowLayout
-        layout?.sideItemScale = 1
-        layout?.sideItemAlpha = 1
-        layout?.scrollDirection = .vertical
+        testButton.setTitle("Test", for: .normal)
+        testButton.backgroundColor = .black
     }
 }
 
-extension MainScreenView: UICollectionViewDelegate {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        viewForSupplementaryElementOfKind kind: String,
-        at indexPath: IndexPath
-    ) -> UICollectionReusableView {
-        let header: SearchCollectionViewHeader = collectionView.dequeueReusableHeaderView(for: indexPath)
+extension MainScreenView: UITableViewDelegate {
+    func tableView(
+        _ tableView: UITableView,
+        viewForHeaderInSection section: Int
+    ) -> UIView? {
+        let header: SearchTableViewHeader = tableView.dequeueReusableHeaderFooterView()
         header.searchDelegate = self
         return header
     }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 240
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(FacultyDescriptionView(), animated: true)
+    }
 }
 
-extension MainScreenView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension MainScreenView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: FacultyCardCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: FacultyCardTableViewCell = tableView.dequeueReusableCell(for: indexPath)
         cell.setupValues(name: "ПСФ", fullName: "Приборостроительный факультет", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempus nisi arcu, eu lacinia tortor euismod vel. Aliquam vestibulum non lectus id pretium. Vestibulum vel pretium orci. Phasellus condimentum, arcu quis bibendum malesuada, felis libero suscipit mauris, id efficitur justo sem vitae tortor. Sed augue massa, luctus sed pellentesque ut, fringilla nec neque. Mauris eleifend augue nec magna fringilla, ac porttitor diam tristique. Aliquam erat volutpat. Ut a nisi velit. Nam diam lacus, pretium ut dictum nec, facilisis ut quam. Curabitur varius tellus eget viverra lobortis. Phasellus semper massa sed ornare hendrerit. Aliquam in ullamcorper massa. Mauris consectetur ipsum ac massa vulputate ornare.")
         return cell
-    }
-}
-
-extension MainScreenView: UICollectionViewDelegateFlowLayout {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        return CGSize(width: 240, height: 240)
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumInteritemSpacingForSectionAt section: Int
-    ) -> CGFloat {
-        return 20
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumLineSpacingForSectionAt section: Int
-    ) -> CGFloat {
-        return 20
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        insetForSectionAt section: Int
-    ) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        referenceSizeForHeaderInSection section: Int
-    ) -> CGSize {
-        return CGSize(width: view.frame.width, height: 240)
     }
 }
 
@@ -123,7 +93,7 @@ extension MainScreenView: UISearchBarDelegate {
 
 }
 
-class SearchCollectionViewHeader: UICollectionReusableView, ReuseIdentifiable {
+class SearchTableViewHeader: UITableViewHeaderFooterView, ReuseIdentifiable {
     private let titleLabel = UILabel()
     private let searchBarContainer = UIView()
     private let searchBar = UISearchBar()
@@ -135,8 +105,8 @@ class SearchCollectionViewHeader: UICollectionReusableView, ReuseIdentifiable {
         }
     }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview().inset(20)

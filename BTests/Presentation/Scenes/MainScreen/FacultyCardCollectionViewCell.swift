@@ -7,18 +7,17 @@
 
 import UIKit
 
-class FacultyCardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
+class FacultyCardTableViewCell: UITableViewCell, ReuseIdentifiable {
     private let cardView = UIView()
     private let facultyNameLabel = UILabel()
     private let fullFacultyNameLabel = UILabel()
     private let facultyDescriptionLabel = UILabel()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(cardView)
         cardView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
+            $0.edges.equalToSuperview().inset(50)
         }
 
         cardView.addSubview(facultyNameLabel)
@@ -37,6 +36,9 @@ class FacultyCardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
             $0.top.equalTo(fullFacultyNameLabel.snp.bottom).offset(20)
             $0.leading.trailing.bottom.equalToSuperview().inset(10)
         }
+
+        backgroundColor = .clear
+        selectionStyle = .none
 
         cardView.backgroundColor = .white
         cardView.layer.shadowColor = UIColor.black.cgColor

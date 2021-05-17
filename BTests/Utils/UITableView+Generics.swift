@@ -18,4 +18,15 @@ extension UITableView {
         }
         return cell
     }
+
+    func registerHeaderFooter<T: UITableViewHeaderFooterView>(_: T.Type) where T: ReuseIdentifiable {
+        register(T.self, forHeaderFooterViewReuseIdentifier: T.reuseId)
+    }
+
+    func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>() -> T where T: ReuseIdentifiable {
+        guard let cell = dequeueReusableHeaderFooterView(withIdentifier: T.reuseId) as? T else {
+            fatalError("Could not dequeue header footer with identifier: \(T.reuseId)")
+        }
+        return cell
+    }
 }

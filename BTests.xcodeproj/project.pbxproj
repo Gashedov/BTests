@@ -30,6 +30,8 @@
 		27DD0423264983CA00E9C265 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD0422264983CA00E9C265 /* AuthorizationView.swift */; };
 		27ED5BAF263EFC1900D07866 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED5BAE263EFC1900D07866 /* TestView.swift */; };
 		27ED5BB5263EFDD100D07866 /* QuestionCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED5BB4263EFDD100D07866 /* QuestionCardCollectionViewCell.swift */; };
+		27F633B02652BABB0009CB05 /* FacultyDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F633AF2652BABB0009CB05 /* FacultyDescriptionView.swift */; };
+		27F633B22652C11D0009CB05 /* SpecialtyDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F633B12652C11D0009CB05 /* SpecialtyDescriptionView.swift */; };
 		27FD0454264FFD7E0045ABA6 /* TestsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD0453264FFD7E0045ABA6 /* TestsListView.swift */; };
 		27FD0456264FFF860045ABA6 /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD0455264FFF860045ABA6 /* TestTableViewCell.swift */; };
 		27FD0458265003D50045ABA6 /* UITableView+Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FD0457265003D50045ABA6 /* UITableView+Generics.swift */; };
@@ -91,6 +93,8 @@
 		27DD0422264983CA00E9C265 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		27ED5BAE263EFC1900D07866 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		27ED5BB4263EFDD100D07866 /* QuestionCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		27F633AF2652BABB0009CB05 /* FacultyDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyDescriptionView.swift; sourceTree = "<group>"; };
+		27F633B12652C11D0009CB05 /* SpecialtyDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyDescriptionView.swift; sourceTree = "<group>"; };
 		27FD0453264FFD7E0045ABA6 /* TestsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsListView.swift; sourceTree = "<group>"; };
 		27FD0455264FFF860045ABA6 /* TestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
 		27FD0457265003D50045ABA6 /* UITableView+Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Generics.swift"; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 		271746FE26121B4C003FA54F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				27F633AE2652BA950009CB05 /* SpecialryDescription */,
+				27F633AD2652BA7F0009CB05 /* FacultyDescription */,
 				27FD0459265047420045ABA6 /* MainScreen */,
 				27FD0452264FFD680045ABA6 /* TestsList */,
 				27C4BEC32645685000618282 /* TestResult */,
@@ -284,6 +290,22 @@
 				27DD0422264983CA00E9C265 /* AuthorizationView.swift */,
 			);
 			path = Authorization;
+			sourceTree = "<group>";
+		};
+		27F633AD2652BA7F0009CB05 /* FacultyDescription */ = {
+			isa = PBXGroup;
+			children = (
+				27F633AF2652BABB0009CB05 /* FacultyDescriptionView.swift */,
+			);
+			path = FacultyDescription;
+			sourceTree = "<group>";
+		};
+		27F633AE2652BA950009CB05 /* SpecialryDescription */ = {
+			isa = PBXGroup;
+			children = (
+				27F633B12652C11D0009CB05 /* SpecialtyDescriptionView.swift */,
+			);
+			path = SpecialryDescription;
 			sourceTree = "<group>";
 		};
 		27FD0452264FFD680045ABA6 /* TestsList */ = {
@@ -551,6 +573,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F633B02652BABB0009CB05 /* FacultyDescriptionView.swift in Sources */,
 				27AC78722649314E00B769BA /* LastCardCollectionViewCell.swift in Sources */,
 				27B1DB2126260DB20082D58A /* CardStackView.swift in Sources */,
 				27DD0423264983CA00E9C265 /* AuthorizationView.swift in Sources */,
@@ -572,6 +595,7 @@
 				271746F92612182B003FA54F /* R.generated.swift in Sources */,
 				2783C9FB2649693A00947B3F /* UserDefaultsService.swift in Sources */,
 				27A3E702263B27A7001509C8 /* TestCardView.swift in Sources */,
+				27F633B22652C11D0009CB05 /* SpecialtyDescriptionView.swift in Sources */,
 				27C4BEC52645695200618282 /* TestResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
