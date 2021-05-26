@@ -55,6 +55,11 @@ class MainScreenView: UIViewController {
 
         testButton.setTitle("Test", for: .normal)
         testButton.backgroundColor = .black
+        testButton.addTarget(self, action: #selector(openTest), for: .touchUpInside)
+    }
+
+    @objc func openTest() {
+        navigationController?.pushViewController(TestsListView(), animated: true)
     }
 }
 
@@ -90,6 +95,20 @@ extension MainScreenView: UITableViewDataSource {
 }
 
 extension MainScreenView: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+
+        // Remove focus from the search bar.
+        searchBar.endEditing(true)
+
+        // Perform any necessary work.  E.g., repopulating a table view
+        // if the search bar performs filtering.
+    }
 
 }
 
@@ -142,12 +161,12 @@ class SearchTableViewHeader: UITableViewHeaderFooterView, ReuseIdentifiable {
         searchBarContainer.backgroundColor = .white
         searchBarContainer.layer.cornerRadius = 20
 
-        searchBar.tintColor = .white
+        searchBar.tintColor = .lightGray
         searchBar.barTintColor = .white
         searchBar.barStyle = .default
         searchBar.sizeToFit()
         searchBar.backgroundImage = UIImage()
-        searchBar.setSearchFieldBackgroundImage(R.image.searchLine(), for: .normal)
+        //searchBar.setSearchFieldBackgroundImage(R.image.searchLine(), for: .normal)
 
         searchBarBottomBorder.backgroundColor = .lightGray
     }

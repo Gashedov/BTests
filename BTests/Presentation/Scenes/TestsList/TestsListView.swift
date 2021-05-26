@@ -26,6 +26,11 @@ class TestsListView: UIViewController {
         setupUI()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+
     // MARK: - Private methods
     private func setupUI() {
         tableView.register(TestTableViewCell.self)

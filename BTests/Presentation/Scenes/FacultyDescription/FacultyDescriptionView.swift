@@ -22,6 +22,8 @@ class FacultyDescriptionView: UIViewController {
 
     private let trayViewOffset: CGFloat = 50
 
+    private var trayViewClosed = true
+
     //MARK: - Life cucle methods
     override func loadView() {
         view = UIView()
@@ -59,14 +61,14 @@ class FacultyDescriptionView: UIViewController {
         view.addSubview(trayView)
         trayView.snp.makeConstraints {
             $0.trailing.leading.equalToSuperview()
-            $0.top.equalTo(view.snp.bottom).inset(trayViewOffset)
-            $0.height.equalTo(400)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(trayViewOffset)
+            $0.height.equalTo(500)
         }
 
         trayView.addSubview(expandView)
         expandView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(40)
+            $0.height.equalTo(50)
         }
 
         trayView.addSubview(specialtyTableView)
@@ -85,7 +87,11 @@ class FacultyDescriptionView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        trayView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(dragView)))
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragView))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTaped))
+        tapGestureRecognizer.require(toFail: panGestureRecognizer)
+        trayView.addGestureRecognizer(panGestureRecognizer)
+        expandView.addGestureRecognizer(tapGestureRecognizer)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -95,6 +101,8 @@ class FacultyDescriptionView: UIViewController {
 
     private func setupUI() {
         view.backgroundColor = .lightGray
+
+        specialtyTableView.register(SpecialtyTableViewCell.self)
 
         titleLabel.textAlignment = .center
         titleLabel.font = .boldSystemFont(ofSize: 32)
@@ -113,34 +121,86 @@ class FacultyDescriptionView: UIViewController {
         trayView.backgroundColor = .white
         expandView.backgroundColor = .darkGray
         expandImageView.backgroundColor = .black
+
+        specialtyTableView.delegate = self
+        specialtyTableView.dataSource = self
+    }
+
+    @objc private func viewTaped() {
+        if trayViewClosed {
+            openTrayView()
+        } else {
+            closeTrayView()
+        }
     }
 
     @objc private func dragView(gesture: UIPanGestureRecognizer) {
         guard let target = gesture.view else { return }
-        let velocity = gesture.velocity(in: self.view).y/50
-        let alignmentYValue = (view.bounds.maxY-trayViewOffset)/2
+        let alignmentYValue = (view.bounds.height - target.frame.height)/2
+        let transition = gesture.translation(in: view)
 
         switch gesture.state {
         case .changed:
-            UIView.animate(withDuration: 0.25) {
-                guard target.frame.minY > self.view.bounds.minY-10 else {
-                    target.center.y = self.view.center.y
-                    return
-                }
-                target.center = CGPoint(x: target.center.x, y: target.center.y + velocity)
+            // stop moving if view were draged higher than needed
+            if target.frame.minY < view.bounds.height - target.frame.height + trayViewOffset/2,
+               transition.y < 0 {
+                gesture.setTranslation(.zero, in: view)
+                return
             }
+
+            target.center = CGPoint(x: target.center.x, y: target.center.y + transition.y)
+            gesture.setTranslation(.zero, in: view)
         case .ended:
-            UIView.animate(withDuration: 0.25) {
-                if target.frame.minY < self.view.bounds.minY ||
-                    target.frame.minY+velocity < alignmentYValue {
-                    target.center.y = self.view.center.y
+                // close if view were moved down more than aligment value
+                // or view were moved out of bottom screen bound
+                let wasMovedOutOfBottomBound = target.frame.minY + trayViewOffset > view.frame.maxY
+                let shouldClose = target.frame.minY > view.bounds.height - alignmentYValue
+
+                if wasMovedOutOfBottomBound || shouldClose {
+                    closeTrayView()
                 }
-                if target.frame.minY+velocity > alignmentYValue {
-                    target.center.y = self.view.center.y+self.trayViewOffset
+
+                // open if view were moved higher than aligment line
+                if target.frame.minY < view.bounds.height - alignmentYValue {
+                    openTrayView()
                 }
-            }
         default:
             break
         }
+    }
+
+    private func closeTrayView() {
+        let bottomSaveAreaInset = view.safeAreaInsets.bottom
+        UIView.animate(withDuration: 0.25) {
+            self.trayView.center.y = self.view.frame.maxY +
+                self.trayView.frame.height/2 - self.trayViewOffset - bottomSaveAreaInset
+        }
+        trayViewClosed = true
+    }
+
+    private func openTrayView() {
+        UIView.animate(withDuration: 0.25) {
+            self.trayView.center.y = self.view.center.y +
+                (self.view.frame.height - self.trayView.frame.height)/2
+        }
+        trayViewClosed = false
+    }
+}
+
+extension FacultyDescriptionView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(SpecialtyDescriptionView(), animated: true)
+    }
+}
+
+extension FacultyDescriptionView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: SpecialtyTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.setup(shortName: "ПОИТ", fullName: "Программное обеспечение информационных технологий")
+        return cell
     }
 }
