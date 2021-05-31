@@ -9,6 +9,7 @@ import UIKit
 
 class FacultyCardTableViewCell: UITableViewCell, ReuseIdentifiable {
     private let cardView = UIView()
+    private let cardViewHeader = UIView()
     private let facultyNameLabel = UILabel()
     private let fullFacultyNameLabel = UILabel()
     private let facultyDescriptionLabel = UILabel()
@@ -20,14 +21,20 @@ class FacultyCardTableViewCell: UITableViewCell, ReuseIdentifiable {
             $0.edges.equalToSuperview().inset(50)
         }
 
-        cardView.addSubview(facultyNameLabel)
+        cardView.addSubview(cardViewHeader)
+        cardViewHeader.snp.makeConstraints {
+            $0.leading.trailing.top.equalToSuperview()
+            $0.height.equalToSuperview().multipliedBy(0.25)
+        }
+
+        cardViewHeader.addSubview(facultyNameLabel)
         facultyNameLabel.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(10)
+            $0.top.leading.trailing.equalToSuperview().inset(20)
         }
 
         cardView.addSubview(fullFacultyNameLabel)
         fullFacultyNameLabel.snp.makeConstraints {
-            $0.top.equalTo(facultyNameLabel.snp.bottom)
+            $0.top.equalTo(cardViewHeader.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(10)
         }
 
@@ -40,11 +47,15 @@ class FacultyCardTableViewCell: UITableViewCell, ReuseIdentifiable {
         backgroundColor = .clear
         selectionStyle = .none
 
-        cardView.backgroundColor = .white
+        cardView.backgroundColor = R.color.elementBackground()
         cardView.layer.shadowColor = UIColor.black.cgColor
         cardView.layer.shadowOpacity = 1
         cardView.layer.shadowOffset = .zero
         cardView.layer.cornerRadius = 20
+        cardView.layer.masksToBounds = true
+
+        cardViewHeader.backgroundColor = R.color.secondaryColor()
+        cardViewHeader.clipsToBounds = true
 
         facultyNameLabel.textAlignment = .center
         facultyNameLabel.font = .systemFont(ofSize: 22, weight: .semibold)
@@ -54,7 +65,6 @@ class FacultyCardTableViewCell: UITableViewCell, ReuseIdentifiable {
         fullFacultyNameLabel.font = .systemFont(ofSize: 12, weight: .light)
         fullFacultyNameLabel.text = "Long and full name of a faculty with all details"
         fullFacultyNameLabel.numberOfLines = 2
-
 
         facultyDescriptionLabel.font = .systemFont(ofSize: 14)
         facultyDescriptionLabel.numberOfLines = 0

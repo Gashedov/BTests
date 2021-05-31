@@ -79,20 +79,31 @@ class AuthorizationView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .lightGray
+        view.backgroundColor = R.color.primaryColor()
 
         credentionalsTitle.text = "Credentinals"
 
-        credentionalsContainer.backgroundColor = .darkGray
+        credentionalsContainer.backgroundColor = R.color.elementBackground()
         credentionalsContainer.layer.cornerRadius = 10
 
-        nameTextField.placeholder = "name"
-        surnameTextField.placeholder = "surname"
-        cityTextField.placeholder = "city"
-        phoneNumberTextField.placeholder = "phone number"
+        nameTextField.placeholder = R.string.localizable.name()
+        nameTextField.titleActiveTextColor = R.color.primaryColor()
 
-        confirmButton.setTitle("Confirm", for: .normal)
-        skipButton.setTitle("skip", for: .normal)
+        surnameTextField.placeholder = R.string.localizable.surname()
+        surnameTextField.titleActiveTextColor = R.color.primaryColor()
+
+        cityTextField.placeholder = R.string.localizable.city()
+        cityTextField.titleActiveTextColor = R.color.primaryColor()
+
+        phoneNumberTextField.placeholder = R.string.localizable.phoneNumber()
+        phoneNumberTextField.titleActiveTextColor = R.color.primaryColor()
+
+        confirmButton.setTitle(R.string.localizable.confirm(), for: .normal)
+        confirmButton.backgroundColor = R.color.elementTint()
+        confirmButton.layer.cornerRadius = 20
+
+        skipButton.setTitle(R.string.localizable.skip(), for: .normal)
+        skipButton.setTitleColor(R.color.primaryColor(), for: .normal)
         skipButton.addTarget(self, action: #selector(skip), for: .touchUpInside)
     }
 

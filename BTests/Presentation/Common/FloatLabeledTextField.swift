@@ -55,18 +55,18 @@ class FloatLabelTextField: UITextField {
         }
     }
 
-    var titleTextColour: UIColor = UIColor.gray {
+    var titleTextColor: UIColor = UIColor.gray {
         didSet {
             if !isFirstResponder {
-                title.textColor = titleTextColour
+                title.textColor = titleTextColor
             }
         }
     }
 
-   var titleActiveTextColour: UIColor! {
+   var titleActiveTextColor: UIColor! {
         didSet {
             if isFirstResponder {
-                title.textColor = titleActiveTextColour
+                title.textColor = titleActiveTextColor
             }
         }
     }
@@ -87,9 +87,9 @@ class FloatLabelTextField: UITextField {
         super.layoutSubviews()
         setTitlePositionForTextAlignment()
         if let text = text, !text.isEmpty && isFirstResponder {
-            title.textColor = titleActiveTextColour
+            title.textColor = titleActiveTextColor
         } else {
-            title.textColor = titleTextColour
+            title.textColor = titleTextColor
         }
         if let text = text, text.isEmpty {
             hideTitle(isFirstResponder)
@@ -136,10 +136,10 @@ class FloatLabelTextField: UITextField {
     // MARK:- Private Methods
     private func setup() {
         borderStyle = .none
-        titleActiveTextColour = tintColor
+        titleActiveTextColor = tintColor
         title.alpha = 0.0
         title.font = titleFont
-        title.textColor = titleTextColour
+        title.textColor = titleTextColor
         if let placeholder = placeholder , !placeholder.isEmpty {
             title.text = placeholder
             title.sizeToFit()

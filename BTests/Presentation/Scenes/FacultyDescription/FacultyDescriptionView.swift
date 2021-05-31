@@ -80,7 +80,7 @@ class FacultyDescriptionView: UIViewController {
         expandView.addSubview(expandImageView)
         expandImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.height.width.equalTo(expandView.snp.height).inset(4)
+            $0.size.equalTo(30)
         }
     }
 
@@ -97,33 +97,55 @@ class FacultyDescriptionView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+
+        navigationController?.navigationBar.backIndicatorImage = R.image.backButton()
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = R.image.backButton()
+        navigationController?.navigationBar.tintColor = .black
+
+        navigationItem.leftItemsSupplementBackButton = true
+        navigationController?.navigationBar.backItem?.title = ""
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
     }
 
     private func setupUI() {
-        view.backgroundColor = .lightGray
+        view.backgroundColor = R.color.elementBackground()
 
         specialtyTableView.register(SpecialtyTableViewCell.self)
 
         titleLabel.textAlignment = .center
         titleLabel.font = .boldSystemFont(ofSize: 32)
         titleLabel.text = "Faculty name"
+        titleLabel.textColor = .darkGray
 
         fullNameLabel.textAlignment = .center
         fullNameLabel.font = .systemFont(ofSize: 24, weight: .semibold)
         fullNameLabel.numberOfLines = 2
         fullNameLabel.text = "Full name of faculty"
+        fullNameLabel.textColor = .darkGray
 
         descriptionLabel.font = .systemFont(ofSize: 24)
         descriptionLabel.backgroundColor = .clear
         descriptionLabel.numberOfLines = 0
+        descriptionLabel.textColor = .darkGray
         descriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur sapien nulla, vitae sodales sapien ultrices et. Morbi velit sem, bibendum vitae cursus ac, iaculis id massa. Maecenas iaculis enim nec arcu commodo porta. Etiam accumsan maximus augue vitae tempus. Vestibulum ac est purus. Etiam ut erat ullamcorper, bibendum metus in, volutpat quam. Donec varius at tellus ac pretium. Cras quam purus, tristique nec ipsum a, hendrerit iaculis ante. Integer pulvinar sodales neque, nec consequat nisi pulvinar non. Quisque ullamcorper nunc vel dolor interdum, a laoreet justo tincidunt. Duis at tempus mi. Proin id consectetur dolor. Maecenas nisl felis, gravida vitae quam vitae, placerat pharetra enim. Suspendisse ultricies imperdiet ante molestie accumsan. Donec mollis eleifend tortor, ac lobortis quam eleifend et."
 
-        trayView.backgroundColor = .white
-        expandView.backgroundColor = .darkGray
-        expandImageView.backgroundColor = .black
+        trayView.backgroundColor = R.color.elementBackground()
+        expandView.backgroundColor = R.color.primaryColor()
+        expandImageView.image = R.image.arrowUp()
+        expandImageView.tintColor = .white
+        expandImageView.contentMode = .scaleAspectFit
 
         specialtyTableView.delegate = self
         specialtyTableView.dataSource = self
+        specialtyTableView.backgroundColor = R.color.elementBackground()
     }
 
     @objc private func viewTaped() {
@@ -174,6 +196,7 @@ class FacultyDescriptionView: UIViewController {
         UIView.animate(withDuration: 0.25) {
             self.trayView.center.y = self.view.frame.maxY +
                 self.trayView.frame.height/2 - self.trayViewOffset - bottomSaveAreaInset
+            self.expandImageView.image = R.image.arrowUp()
         }
         trayViewClosed = true
     }
@@ -182,6 +205,7 @@ class FacultyDescriptionView: UIViewController {
         UIView.animate(withDuration: 0.25) {
             self.trayView.center.y = self.view.center.y +
                 (self.view.frame.height - self.trayView.frame.height)/2
+            self.expandImageView.image = R.image.arrowDown()
         }
         trayViewClosed = false
     }

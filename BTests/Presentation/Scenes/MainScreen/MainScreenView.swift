@@ -11,6 +11,7 @@ import UPCarouselFlowLayout
 class MainScreenView: UIViewController {
 
     // MARK: - Properties
+    private let backgroundView = GradientedView()
     private let cardTableView = UITableView(frame: .zero, style: .grouped)
     private let testButton = UIButton()
 
@@ -18,7 +19,10 @@ class MainScreenView: UIViewController {
     override func loadView() {
         view = UIView()
 
-        view.backgroundColor = .lightGray
+        view.addSubview(backgroundView)
+        backgroundView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
 
         view.addSubview(cardTableView)
         cardTableView.snp.makeConstraints {
@@ -42,6 +46,15 @@ class MainScreenView: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        backgroundView.applyGradient(
+            startPoint: CGPoint(x: 0, y: 0),
+            endPoint: CGPoint(x: 0.5, y: 1.5),
+            colorArray: [R.color.primaryColor(), .black]
+        )
+    }
+
     //MARK: - Private methods
     private func setupUI() {
         cardTableView.separatorStyle = .none
@@ -54,7 +67,7 @@ class MainScreenView: UIViewController {
         cardTableView.registerHeaderFooter(SearchTableViewHeader.self)
 
         testButton.setTitle("Test", for: .normal)
-        testButton.backgroundColor = .black
+        testButton.backgroundColor = R.color.minorColor()
         testButton.addTarget(self, action: #selector(openTest), for: .touchUpInside)
     }
 

@@ -29,6 +29,20 @@ class TestsListView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.barTintColor = R.color.primaryColor()
+
+        navigationController?.navigationBar.backIndicatorImage = R.image.backButton()
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = R.image.backButton()
+        navigationController?.navigationBar.tintColor = .black
+
+        navigationItem.leftItemsSupplementBackButton = true
+        navigationController?.navigationBar.backItem?.title = ""
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
     }
 
     // MARK: - Private methods
@@ -36,7 +50,7 @@ class TestsListView: UIViewController {
         tableView.register(TestTableViewCell.self)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .lightGray
+        tableView.backgroundColor = R.color.elementBackground()
         tableView.rowHeight = 80
     }
 }

@@ -30,6 +30,8 @@ class SpecialtyTableViewCell: UITableViewCell, ReuseIdentifiable {
         shortNameLabel.font = .systemFont(ofSize: 10, weight: .bold)
         fullNameLabel.font = .systemFont(ofSize: 14)
         fullNameLabel.numberOfLines = 2
+
+        backgroundColor = R.color.elementBackground()
     }
 
     @available(*, unavailable)

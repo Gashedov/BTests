@@ -20,6 +20,7 @@ class TestTableViewCell: UITableViewCell, ReuseIdentifiable {
             $0.leading.top.equalToSuperview().inset(20)
         }
 
+        backgroundColor = R.color.elementTint()
     }
 
     @available(*, unavailable)
