@@ -30,20 +30,21 @@ class LastCardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
             $0.top.equalTo(resultTitle.snp.bottom).offset(40)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(40)
-            $0.width.equalTo(120)
+            $0.width.equalTo(180)
         }
 
-        cardView.backgroundColor = .green
+        cardView.backgroundColor = R.color.primaryColor()
         cardView.layer.shadowColor = UIColor.black.cgColor
         cardView.layer.shadowOpacity = 1
         cardView.layer.shadowOffset = .zero
         cardView.layer.cornerRadius = 20
 
         resultTitle.textAlignment = .center
+        resultTitle.numberOfLines = 2
         resultTitle.font = .systemFont(ofSize: 22, weight: .semibold)
-        resultTitle.text = R.string.localizable.completeTest()
+        resultTitle.text = "Завершить тест" //R.string.localizable.completeTest()
 
-        resultButton.setTitle(R.string.localizable.tapToComplete(), for: .normal)
+        resultButton.setTitle("ЗАВЕРШИТЬ", for: .normal)
     }
 
     required init?(coder: NSCoder) {

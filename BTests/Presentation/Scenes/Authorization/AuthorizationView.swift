@@ -9,6 +9,8 @@ import UIKit
 
 class AuthorizationView: UIViewController {
     //MARK: - Properties
+    private let scrollView = UIScrollView()
+    private let containerView = UIView()
     private let credentionalsContainer = UIView()
     private let credentionalsTitle = UILabel()
     private let nameTextField = FloatLabelTextField()
@@ -22,7 +24,19 @@ class AuthorizationView: UIViewController {
     override func loadView() {
         view = UIView()
 
-        view.addSubview(credentionalsContainer)
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+
+        scrollView.addSubview(containerView)
+        containerView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+            $0.height.equalToSuperview().priority(.low)
+        }
+
+        containerView.addSubview(credentionalsContainer)
         credentionalsContainer.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.8)
@@ -71,7 +85,8 @@ class AuthorizationView: UIViewController {
         credentionalsContainer.addSubview(skipButton)
         skipButton.snp.makeConstraints {
             $0.top.equalTo(confirmButton.snp.bottom).offset(20)
-            $0.leading.trailing.bottom.equalToSuperview().inset(60)
+            $0.leading.trailing.equalToSuperview().inset(60)
+            $0.bottom.equalToSuperview().inset(30)
             $0.height.equalTo(50)
         }
     }
@@ -81,25 +96,34 @@ class AuthorizationView: UIViewController {
 
         view.backgroundColor = R.color.primaryColor()
 
-        credentionalsTitle.text = "Credentinals"
+        credentionalsTitle.text = R.string.localizable.contactDetails()
 
         credentionalsContainer.backgroundColor = R.color.elementBackground()
         credentionalsContainer.layer.cornerRadius = 10
 
         nameTextField.placeholder = R.string.localizable.name()
         nameTextField.titleActiveTextColor = R.color.primaryColor()
+        nameTextField.delegate = self
+        nameTextField.returnKeyType = .done
 
         surnameTextField.placeholder = R.string.localizable.surname()
         surnameTextField.titleActiveTextColor = R.color.primaryColor()
+        surnameTextField.delegate = self
+        surnameTextField.returnKeyType = .done
 
         cityTextField.placeholder = R.string.localizable.city()
         cityTextField.titleActiveTextColor = R.color.primaryColor()
+        cityTextField.delegate = self
+        cityTextField.returnKeyType = .done
 
         phoneNumberTextField.placeholder = R.string.localizable.phoneNumber()
         phoneNumberTextField.titleActiveTextColor = R.color.primaryColor()
+        phoneNumberTextField.delegate = self
+        phoneNumberTextField.returnKeyType = .done
 
         confirmButton.setTitle(R.string.localizable.confirm(), for: .normal)
         confirmButton.backgroundColor = R.color.elementTint()
+        confirmButton.addTarget(self, action: #selector(confirm), for: .touchUpInside)
         confirmButton.layer.cornerRadius = 20
 
         skipButton.setTitle(R.string.localizable.skip(), for: .normal)
@@ -109,9 +133,33 @@ class AuthorizationView: UIViewController {
 
     // MARK: - Private methods
     @objc private func skip() {
-        let navigation = UINavigationController(rootViewController:  MainScreenView())
+        presentMainScreen()
+    }
+
+    @objc private func confirm() {
+        // send contact details
+        presentMainScreen()
+    }
+
+    private func presentMainScreen() {
+        let navigation = UINavigationController(rootViewController: MainScreenView())
         navigation.isModalInPresentation = true
         navigation.modalPresentationStyle = .fullScreen
         present(navigation, animated: true)
+    }
+}
+
+extension AuthorizationView: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: textField.frame.origin.y), animated: true)
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

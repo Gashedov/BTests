@@ -20,7 +20,7 @@ class FacultyDescriptionView: UIViewController {
     private let expandImageView = UIImageView()
     private let specialtyTableView = UITableView()
 
-    private let trayViewOffset: CGFloat = 50
+    private let trayViewOffset: CGFloat = 70
 
     private var trayViewClosed = true
 
@@ -30,7 +30,8 @@ class FacultyDescriptionView: UIViewController {
 
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(trayViewOffset)
         }
 
         scrollView.addSubview(containerView)
@@ -50,7 +51,6 @@ class FacultyDescriptionView: UIViewController {
         fullNameLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(50)
         }
         containerView.addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints {
@@ -61,14 +61,14 @@ class FacultyDescriptionView: UIViewController {
         view.addSubview(trayView)
         trayView.snp.makeConstraints {
             $0.trailing.leading.equalToSuperview()
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(trayViewOffset)
+            $0.top.equalTo(scrollView.snp.bottom)
             $0.height.equalTo(500)
         }
 
         trayView.addSubview(expandView)
         expandView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(50)
+            $0.height.equalTo(70)
         }
 
         trayView.addSubview(specialtyTableView)
@@ -109,12 +109,6 @@ class FacultyDescriptionView: UIViewController {
         navigationController?.navigationBar.backItem?.title = ""
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.shadowImage = nil
-    }
-
     private func setupUI() {
         view.backgroundColor = R.color.elementBackground()
 
@@ -122,20 +116,20 @@ class FacultyDescriptionView: UIViewController {
 
         titleLabel.textAlignment = .center
         titleLabel.font = .boldSystemFont(ofSize: 32)
-        titleLabel.text = "Faculty name"
+        titleLabel.text = "ФИТР"
         titleLabel.textColor = .darkGray
 
         fullNameLabel.textAlignment = .center
         fullNameLabel.font = .systemFont(ofSize: 24, weight: .semibold)
         fullNameLabel.numberOfLines = 2
-        fullNameLabel.text = "Full name of faculty"
+        fullNameLabel.text = "Факультет информационных технологий и робототехники"
         fullNameLabel.textColor = .darkGray
 
         descriptionLabel.font = .systemFont(ofSize: 24)
         descriptionLabel.backgroundColor = .clear
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textColor = .darkGray
-        descriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur sapien nulla, vitae sodales sapien ultrices et. Morbi velit sem, bibendum vitae cursus ac, iaculis id massa. Maecenas iaculis enim nec arcu commodo porta. Etiam accumsan maximus augue vitae tempus. Vestibulum ac est purus. Etiam ut erat ullamcorper, bibendum metus in, volutpat quam. Donec varius at tellus ac pretium. Cras quam purus, tristique nec ipsum a, hendrerit iaculis ante. Integer pulvinar sodales neque, nec consequat nisi pulvinar non. Quisque ullamcorper nunc vel dolor interdum, a laoreet justo tincidunt. Duis at tempus mi. Proin id consectetur dolor. Maecenas nisl felis, gravida vitae quam vitae, placerat pharetra enim. Suspendisse ultricies imperdiet ante molestie accumsan. Donec mollis eleifend tortor, ac lobortis quam eleifend et."
+        descriptionLabel.text = "Факультет создан в 1983 г. как факультет роботов и робототехнических систем на базе трех старейших кафедр Белорусского политехнического института: высшей математики, технической физики, электропривода и автоматизации промышленных установок и технологических комплексов и молодой кафедры– автоматизации и комплексной механизации.Факультет начинался с двух специальностей: Автоматизация технологических процессов и производств и «Автоматизированный электропривод», имеющих специализации по робототехнике. И сегодня факультет остается единственным в республике центром подготовки специалистов в области робототехники.В то же время, в соответствии с требованиями сегодняшнего дня, расширяется подготовка специалистов в области информационных технологий и робототехники. Новое название наиболее полно отражает сложившуюся структуру специальностей направленность развития факультета."
 
         trayView.backgroundColor = R.color.elementBackground()
         expandView.backgroundColor = R.color.primaryColor()
@@ -195,7 +189,7 @@ class FacultyDescriptionView: UIViewController {
         let bottomSaveAreaInset = view.safeAreaInsets.bottom
         UIView.animate(withDuration: 0.25) {
             self.trayView.center.y = self.view.frame.maxY +
-                self.trayView.frame.height/2 - self.trayViewOffset - bottomSaveAreaInset
+                (self.trayView.frame.height - self.trayViewOffset)/2 - bottomSaveAreaInset
             self.expandImageView.image = R.image.arrowUp()
         }
         trayViewClosed = true
@@ -219,12 +213,22 @@ extension FacultyDescriptionView: UITableViewDelegate {
 
 extension FacultyDescriptionView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SpecialtyTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.setup(shortName: "ПОИТ", fullName: "Программное обеспечение информационных технологий")
+        if indexPath.row == 0 {
+            cell.setup(shortName: "ПОИТ", fullName: "Программное обеспечение информационных технологий")
+        }
+
+        if indexPath.row == 1 {
+            cell.setup(shortName: "ИСИТ", fullName: "ИНФОРМАЦИОННЫЕ СИСТЕМЫ И ТЕХНОЛОГИИ В ОБРАБОТКЕ И ПРЕДСТАВЛЕНИИ ИНФОРМАЦИИ")
+        }
+
+        if indexPath.row == 2 {
+            cell.setup(shortName: "САПР", fullName: "ИНФОРМАЦИОННЫЕ СИСТЕМЫ И ТЕХНОЛОГИИ В ПРОЕКТИРОВАНИИ И ПРОИЗВОДСТВЕ")
+        }
         return cell
     }
 }

@@ -63,12 +63,18 @@ extension TestsListView: UITableViewDelegate {
 
 extension TestsListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TestTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.setup(title: "Test type \(indexPath.row)")
+        if indexPath.row == 0 {
+        cell.setup(title: "ТЕСТ: Какой факультет мне подходит")
+    }
+        if indexPath.row == 1 {
+        cell.setup(title: "ТЕСТ: Какая специальность мне подходит")
+            cell.backgroundColor = .lightGray.withAlphaComponent(0.5)
+    }
         return cell
     }
 }

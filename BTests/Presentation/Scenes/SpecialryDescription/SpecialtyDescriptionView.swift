@@ -41,7 +41,6 @@ class SpecialtyDescriptionView: UIViewController {
         fullNameLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(50)
         }
         containerView.addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints {
@@ -54,35 +53,25 @@ class SpecialtyDescriptionView: UIViewController {
         super.viewDidLoad()
         setupUI()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-        
-        navigationController?.navigationBar.backItem?.title = ""
-    }
-
+    
     private func setupUI() {
         view.backgroundColor = R.color.elementBackground()
 
         titleLabel.textAlignment = .center
         titleLabel.font = .boldSystemFont(ofSize: 32)
-        titleLabel.text = "Faculty name"
+        titleLabel.text = "ПОИТ"
         titleLabel.textColor = .darkGray
 
         fullNameLabel.textAlignment = .center
         fullNameLabel.font = .systemFont(ofSize: 24, weight: .semibold)
         fullNameLabel.numberOfLines = 2
-        fullNameLabel.text = "Full name of faculty"
+        fullNameLabel.text = "Программное обеспечение информационных технологий"
         fullNameLabel.textColor = .darkGray
 
         descriptionLabel.font = .systemFont(ofSize: 24)
         descriptionLabel.backgroundColor = .clear
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textColor = .darkGray
-        descriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur sapien nulla, vitae sodales sapien ultrices et. Morbi velit sem, bibendum vitae cursus ac, iaculis id massa. Maecenas iaculis enim nec arcu commodo porta. Etiam accumsan maximus augue vitae tempus. Vestibulum ac est purus. Etiam ut erat ullamcorper, bibendum metus in, volutpat quam. Donec varius at tellus ac pretium. Cras quam purus, tristique nec ipsum a, hendrerit iaculis ante. Integer pulvinar sodales neque, nec consequat nisi pulvinar non. Quisque ullamcorper nunc vel dolor interdum, a laoreet justo tincidunt. Duis at tempus mi. Proin id consectetur dolor. Maecenas nisl felis, gravida vitae quam vitae, placerat pharetra enim. Suspendisse ultricies imperdiet ante molestie accumsan. Donec mollis eleifend tortor, ac lobortis quam eleifend et."
+        descriptionLabel.text = "Направление специальности ориентировано на подготовку программистов, владеющих современными информационными технологиями обработки и представления информации в технике, производстве, социальной сфере. Обучение студентов ведется с учетом новых тенденций развития интегрированных сред, распределенной обработки данных, разработки приложений для мобильных устройств, хранения и доступа к данным на основе востребованных систем управления базами данных. Особое внимание уделяется изучению технологий разработки Internet и Web-приложений, проектированию информационного обеспечения, организации информационно-вычислительных процессов и систем, систем сбора, хранения и обработки текстовой и графической информации."
     }
 }

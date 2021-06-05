@@ -27,7 +27,7 @@ class TestDescriptionView: UIViewController {
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(100)
             $0.centerX.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(100)
+            $0.leading.trailing.equalToSuperview().inset(20)
         }
         
         view.addSubview(descriptionLabel)
@@ -85,15 +85,15 @@ class TestDescriptionView: UIViewController {
         backgroundView.backgroundColor = .lightGray
 
         titleLabel.font = .boldSystemFont(ofSize: 24)
-        titleLabel.text = "Specialty test"
+        titleLabel.text = "ТЕСТ: какой факультет мне подходит "
         titleLabel.numberOfLines = 2
         titleLabel.textAlignment = .center
 
         descriptionLabel.font = .systemFont(ofSize: 14)
-        descriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur sapien nulla, vitae sodales sapien ultrices et. Morbi velit sem, bibendum vitae cursus ac, iaculis id massa. Maecenas iaculis enim nec arcu commodo porta. Etiam accumsan maximus augue vitae tempus. Vestibulum ac est purus. Etiam ut erat ullamcorper, bibendum metus in, volutpat quam. Donec varius at tellus ac pretium. Cras quam purus, tristique nec ipsum a, hendrerit iaculis ante. Integer pulvinar sodales neque, nec consequat nisi pulvinar non. Quisque ullamcorper nunc vel dolor interdum, a laoreet justo tincidunt. Duis at tempus mi. Proin id consectetur dolor. Maecenas nisl felis, gravida vitae quam vitae, placerat pharetra enim. Suspendisse ultricies imperdiet ante molestie accumsan. Donec mollis eleifend tortor, ac lobortis quam eleifend et."
+        descriptionLabel.text = "Этот тест содержит вопросы, ответив на который система сможет определить предрасположенность к определенному типу деятельности и, более того, поможет определиться с факультетом БНТУ"
         descriptionLabel.numberOfLines = 0
 
-        goButton.setTitle("GO", for: .normal)
+        goButton.setTitle("НАЧАТЬ", for: .normal)
         goButton.addTarget(self, action: #selector(openNext), for: .touchUpInside)
         goButton.layer.cornerRadius = 20
         goButton.backgroundColor = R.color.elementTint()

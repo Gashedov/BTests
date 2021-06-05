@@ -33,7 +33,7 @@ class QuestionCardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
             $0.leading.equalToSuperview().inset(40)
         }
 
-        cardView.backgroundColor = .white
+        cardView.backgroundColor = R.color.elementTint()
         cardView.layer.shadowColor = UIColor.black.cgColor
         cardView.layer.shadowOpacity = 1
         cardView.layer.shadowOffset = .zero
@@ -45,7 +45,7 @@ class QuestionCardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
         questionLabel.numberOfLines = 0
 
         answersStackView.layer.cornerRadius = 10
-        answersStackView.backgroundColor = .lightGray
+        answersStackView.backgroundColor = R.color.elementBackground()
         answersStackView.axis = .vertical
         answersStackView.distribution = .fillEqually
         answersStackView.alignment = .leading
@@ -70,6 +70,7 @@ class QuestionCardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
             let answerButton = UIButton()
 
             answerButton.setTitle($0, for: .normal)
+            answerButton.setTitleColor(.black, for: .normal)
 
             answersStackView.addArrangedSubview(answerButton)
         }

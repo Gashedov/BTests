@@ -66,7 +66,7 @@ class MainScreenView: UIViewController {
         cardTableView.register(FacultyCardTableViewCell.self)
         cardTableView.registerHeaderFooter(SearchTableViewHeader.self)
 
-        testButton.setTitle("Test", for: .normal)
+        testButton.setTitle("Тест", for: .normal)
         testButton.backgroundColor = R.color.minorColor()
         testButton.addTarget(self, action: #selector(openTest), for: .touchUpInside)
     }
@@ -102,7 +102,13 @@ extension MainScreenView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: FacultyCardTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.setupValues(name: "ПСФ", fullName: "Приборостроительный факультет", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempus nisi arcu, eu lacinia tortor euismod vel. Aliquam vestibulum non lectus id pretium. Vestibulum vel pretium orci. Phasellus condimentum, arcu quis bibendum malesuada, felis libero suscipit mauris, id efficitur justo sem vitae tortor. Sed augue massa, luctus sed pellentesque ut, fringilla nec neque. Mauris eleifend augue nec magna fringilla, ac porttitor diam tristique. Aliquam erat volutpat. Ut a nisi velit. Nam diam lacus, pretium ut dictum nec, facilisis ut quam. Curabitur varius tellus eget viverra lobortis. Phasellus semper massa sed ornare hendrerit. Aliquam in ullamcorper massa. Mauris consectetur ipsum ac massa vulputate ornare.")
+        if indexPath.row == 0 {
+        cell.setupValues(name: "ПСФ", fullName: "Приборостроительный факультет", description: "Начало подготовки специалистов приборостроительного направления в БПИ-БГПА-БНТУ было положено в 1961 году созданием кафедры «Приборы точной механики». Ее первым заведующим, который возглавлял кафедру на протяжении 23 лет, был заслуженный работник высшей школы БССР, профессор С.С. Костюкович.Развитие оптической промышленности сделало необходимым открытие в 1976 году оптико-механического факультета, который в разной время возглавляли доцент Р.И. Томилин, доцент В.И. Клецко, профессор М.Г. Киселев. В связи с дальнейшим расширением перечня востребованных приборостроительных специальностей в 1978 году был открыт инженерно-физический факультет, деканами которого были профессор Г.С. Круглик и доцент А.Г. Литвинко. В 1984 году оптико-механический и инженерно-физический факультеты были объединены в один – инженерно-физический, который в следующем году был переименован в приборостроительный факультет")
+
+        }
+        if indexPath.row == 1 {
+            cell.setupValues(name: "ФИТР", fullName: "Приборостроительный факультет", description: "LНачало подготовки специалистов приборостроительного направления в БПИ-БГПА-БНТУ было положено в 1961 году созданием кафедры «Приборы точной механики». Ее первым заведующим, который возглавлял кафедру на протяжении 23 лет, был заслуженный работник высшей школы БССР, профессор С.С. Костюкович.Развитие оптической промышленности сделало необходимым открытие в 1976 году оптико-механического факультета, который в разной время возглавляли доцент Р.И. Томилин, доцент В.И. Клецко, профессор М.Г. Киселев. В связи с дальнейшим расширением перечня востребованных приборостроительных специальностей в 1978 году был открыт инженерно-физический факультет, деканами которого были профессор Г.С. Круглик и доцент А.Г. Литвинко. В 1984 году оптико-механический и инженерно-физический факультеты были объединены в один – инженерно-физический, который в следующем году был переименован в приборостроительный факультет")
+        }
         return cell
     }
 }
@@ -169,7 +175,7 @@ class SearchTableViewHeader: UITableViewHeaderFooterView, ReuseIdentifiable {
 
         titleLabel.textAlignment = .center
         titleLabel.font = .systemFont(ofSize: 22, weight: .semibold)
-        titleLabel.text = "Find your way"
+        titleLabel.text = "Найди себя"
 
         searchBarContainer.backgroundColor = .white
         searchBarContainer.layer.cornerRadius = 20

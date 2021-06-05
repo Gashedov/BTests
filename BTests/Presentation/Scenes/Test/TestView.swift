@@ -74,11 +74,11 @@ class TestView: UIViewController {
 
     // MARK: - Private methods
     private func setupUI() {
-        view.backgroundColor = .lightGray
+        view.backgroundColor = R.color.elementBackground()
 
-        progressBarContainerView.backgroundColor = .darkGray
+        progressBarContainerView.backgroundColor = R.color.minorColor()
 
-        progressLine.backgroundColor = .cyan
+        progressLine.backgroundColor = R.color.elementTint()
         progressLineInficator.backgroundColor = .red
 
         progressCounterLabel.text = "0/3"
@@ -118,7 +118,8 @@ extension TestView: UICollectionViewDataSource {
             return cell
         }
         let cell: QuestionCardCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.setupValues(question: "<Question text>", answers: ["<answer one>", "<answer two>", "<answer tree>"])
+        cell.setupValues(question: "Увлекались ли вы когда нибудь электроникой или робототехникой?",
+                         answers: ["да", "нет", "нет, но было бы интересно"])
         return cell
     }
 }

@@ -11,10 +11,11 @@
 "creators" = "Creators";
 "CompleteTest" = "Complete test";
 "TapToComplete" = "Tap to complete test";
-"Welcome" = "Welcome to B`Test";
+"Welcome" = "Welcome";
 "Name" = "Name";
 "Surname" = "Surname";
 "City" = "City";
 "PhoneNumber" = "Phone number";
 "Confirm" = "Confirm";
-"Skip" = "Skip"; 
+"Skip" = "Skip";
+"ContactDetails" = "Contact details";
