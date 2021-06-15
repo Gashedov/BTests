@@ -68,7 +68,6 @@ class FacultyCardTableViewCell: UITableViewCell, ReuseIdentifiable {
 
         facultyDescriptionLabel.font = .systemFont(ofSize: 14)
         facultyDescriptionLabel.numberOfLines = 0
-
     }
 
     required init?(coder: NSCoder) {

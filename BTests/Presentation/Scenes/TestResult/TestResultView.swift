@@ -16,6 +16,8 @@ class TestResultView: UIViewController {
     private let nextButton = UIButton()
     private let menuButton = UIButton()
 
+    var viewModel: TestResultViewModel?
+
     // MARK: - Life cucle methods
     override func loadView() {
         view = UIView()
@@ -36,14 +38,6 @@ class TestResultView: UIViewController {
             $0.top.equalTo(resultTitle.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(40)
         }
-
-
-//        view.addSubview(infoButton)
-//        infoButton.snp.makeConstraints {
-//            $0.top.equalTo(resultLabel.snp.bottom).offset(10)
-//            $0.leading.equalTo(resultLabel)
-//            $0.size.equalTo(60)
-//        }
 
         view.addSubview(nextButton)
         nextButton.snp.makeConstraints {
@@ -116,10 +110,10 @@ class TestResultView: UIViewController {
     }
 
     @objc private func openNext() {
-        navigationController?.pushViewController(TestDescriptionView(), animated: true)
+        viewModel?.openNextTest()
     }
 
     @objc private func openMenu() {
-        navigationController?.popToRootViewController(animated: true)
+        viewModel?.goToMainScreen()
     }
 }

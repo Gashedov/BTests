@@ -17,6 +17,8 @@ class TestView: UIViewController {
     private let progressLineInficator = UIView()
     private let progressCounterLabel = UILabel()
 
+    var viewModel: TestViewModel?
+
     private let cardCollectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UPCarouselFlowLayout()
@@ -97,7 +99,7 @@ class TestView: UIViewController {
     }
 
     @objc private func completeTest() {
-        navigationController?.pushViewController(TestResultView(), animated: true)
+        viewModel?.openTestResults()
     }
 }
 

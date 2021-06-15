@@ -20,6 +20,8 @@ class AuthorizationView: UIViewController {
     private let confirmButton = UIButton()
     private let skipButton = UIButton()
 
+    var viewModel: AuthorizationViewModel?
+
     // MARK: - Life cucle methods
     override func loadView() {
         view = UIView()
@@ -93,7 +95,12 @@ class AuthorizationView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
 
+    // MARK: - Private methods
+
+    private func setupUI() {
         view.backgroundColor = R.color.primaryColor()
 
         credentionalsTitle.text = R.string.localizable.contactDetails()
@@ -131,21 +138,17 @@ class AuthorizationView: UIViewController {
         skipButton.addTarget(self, action: #selector(skip), for: .touchUpInside)
     }
 
-    // MARK: - Private methods
     @objc private func skip() {
-        presentMainScreen()
+        viewModel?.skip()
     }
 
     @objc private func confirm() {
-        // send contact details
-        presentMainScreen()
-    }
-
-    private func presentMainScreen() {
-        let navigation = UINavigationController(rootViewController: MainScreenView())
-        navigation.isModalInPresentation = true
-        navigation.modalPresentationStyle = .fullScreen
-        present(navigation, animated: true)
+        viewModel?.confirm(
+            name: nameTextField.text,
+            surname: surnameTextField.text,
+            city: cityTextField.text,
+            phoneNumber: phoneNumberTextField.text
+        )
     }
 }
 

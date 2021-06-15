@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
 //        if !UserDefaultsService.appDidRunBefore {
-            UserDefaultsService.appDidRunBefore = true
+        UserDefaultsStore.shared.appDidRunBefore = true
             window?.rootViewController = WelcomeScreenViewController()
             window?.makeKeyAndVisible()
             return true

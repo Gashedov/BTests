@@ -7,9 +7,11 @@
 
 import UIKit
 
-class TestsListView: UIViewController {
+class TestListView: UIViewController {
     //MARK: - Properties
     let tableView = UITableView()
+
+    var viewModel: TestListViewModel?
 
     //MARK: - Life cucle methods
     override func loadView() {
@@ -23,6 +25,8 @@ class TestsListView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel?.fetchItems()
+        viewModel?.delegate = self
         setupUI()
     }
 
@@ -55,26 +59,28 @@ class TestsListView: UIViewController {
     }
 }
 
-extension TestsListView: UITableViewDelegate {
+extension TestListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(TestDescriptionView(), animated: true)
+        viewModel?.openTestDescription()
     }
 }
 
-extension TestsListView: UITableViewDataSource {
+extension TestListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return viewModel?.items.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TestTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        if indexPath.row == 0 {
-        cell.setup(title: "ТЕСТ: Какой факультет мне подходит")
-    }
-        if indexPath.row == 1 {
-        cell.setup(title: "ТЕСТ: Какая специальность мне подходит")
-            cell.backgroundColor = .lightGray.withAlphaComponent(0.5)
-    }
+        guard let item = viewModel?.items[indexPath.row] else { return UITableViewCell() }
+        cell.setup(title: item.testName)
         return cell
     }
+}
+
+extension TestListView: TestListViewModelDelegate {
+    func itemsFetched() {
+        tableView.reloadData()
+    }
+
 }

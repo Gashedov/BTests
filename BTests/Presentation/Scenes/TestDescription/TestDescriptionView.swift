@@ -14,6 +14,8 @@ class TestDescriptionView: UIViewController {
     private let descriptionLabel = UILabel()
     private let goButton = UIButton()
 
+    var viewModel: TestDescriptionViewModel?
+
     // MARK: - Life cucle methods
     override func loadView() {
         view = UIView()
@@ -94,17 +96,17 @@ class TestDescriptionView: UIViewController {
         descriptionLabel.numberOfLines = 0
 
         goButton.setTitle("НАЧАТЬ", for: .normal)
-        goButton.addTarget(self, action: #selector(openNext), for: .touchUpInside)
+        goButton.addTarget(self, action: #selector(openTest), for: .touchUpInside)
         goButton.layer.cornerRadius = 20
         goButton.backgroundColor = R.color.elementTint()
         goButton.setTitleColor(.lightGray, for: .normal)
 
         view.addGestureRecognizer(
-            UITapGestureRecognizer(target: self, action: #selector(openNext))
+            UITapGestureRecognizer(target: self, action: #selector(openTest))
         )
     }
 
-    @objc private func openNext() {
-        navigationController?.pushViewController(TestView(), animated: true)
+    @objc private func openTest() {
+        viewModel?.openTest()
     }
 }

@@ -24,6 +24,8 @@ class FacultyDescriptionView: UIViewController {
 
     private var trayViewClosed = true
 
+    var viewModel: FacultyDescriptionViewModel?
+
     //MARK: - Life cucle methods
     override func loadView() {
         view = UIView()
@@ -87,11 +89,9 @@ class FacultyDescriptionView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragView))
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTaped))
-        tapGestureRecognizer.require(toFail: panGestureRecognizer)
-        trayView.addGestureRecognizer(panGestureRecognizer)
-        expandView.addGestureRecognizer(tapGestureRecognizer)
+        configureRecognizers()
+        viewModel?.delegate = self
+        viewModel?.fetchSpecialties()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -110,26 +110,27 @@ class FacultyDescriptionView: UIViewController {
     }
 
     private func setupUI() {
+        let faculty = viewModel?.fetchFuculty()
         view.backgroundColor = R.color.elementBackground()
 
         specialtyTableView.register(SpecialtyTableViewCell.self)
 
         titleLabel.textAlignment = .center
         titleLabel.font = .boldSystemFont(ofSize: 32)
-        titleLabel.text = "ФИТР"
+        titleLabel.text = faculty?.name
         titleLabel.textColor = .darkGray
 
         fullNameLabel.textAlignment = .center
         fullNameLabel.font = .systemFont(ofSize: 24, weight: .semibold)
         fullNameLabel.numberOfLines = 2
-        fullNameLabel.text = "Факультет информационных технологий и робототехники"
+        fullNameLabel.text = faculty?.fullName
         fullNameLabel.textColor = .darkGray
 
         descriptionLabel.font = .systemFont(ofSize: 24)
         descriptionLabel.backgroundColor = .clear
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textColor = .darkGray
-        descriptionLabel.text = "Факультет создан в 1983 г. как факультет роботов и робототехнических систем на базе трех старейших кафедр Белорусского политехнического института: высшей математики, технической физики, электропривода и автоматизации промышленных установок и технологических комплексов и молодой кафедры– автоматизации и комплексной механизации.Факультет начинался с двух специальностей: Автоматизация технологических процессов и производств и «Автоматизированный электропривод», имеющих специализации по робототехнике. И сегодня факультет остается единственным в республике центром подготовки специалистов в области робототехники.В то же время, в соответствии с требованиями сегодняшнего дня, расширяется подготовка специалистов в области информационных технологий и робототехники. Новое название наиболее полно отражает сложившуюся структуру специальностей направленность развития факультета."
+        descriptionLabel.text = faculty?.description
 
         trayView.backgroundColor = R.color.elementBackground()
         expandView.backgroundColor = R.color.primaryColor()
@@ -140,6 +141,14 @@ class FacultyDescriptionView: UIViewController {
         specialtyTableView.delegate = self
         specialtyTableView.dataSource = self
         specialtyTableView.backgroundColor = R.color.elementBackground()
+    }
+
+    private func configureRecognizers() {
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragView))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTaped))
+        tapGestureRecognizer.require(toFail: panGestureRecognizer)
+        trayView.addGestureRecognizer(panGestureRecognizer)
+        expandView.addGestureRecognizer(tapGestureRecognizer)
     }
 
     @objc private func viewTaped() {
@@ -207,28 +216,25 @@ class FacultyDescriptionView: UIViewController {
 
 extension FacultyDescriptionView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(SpecialtyDescriptionView(), animated: true)
+        viewModel?.openSpecialtyView()
     }
 }
 
 extension FacultyDescriptionView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel?.specialties.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SpecialtyTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        if indexPath.row == 0 {
-            cell.setup(shortName: "ПОИТ", fullName: "Программное обеспечение информационных технологий")
-        }
-
-        if indexPath.row == 1 {
-            cell.setup(shortName: "ИСИТ", fullName: "ИНФОРМАЦИОННЫЕ СИСТЕМЫ И ТЕХНОЛОГИИ В ОБРАБОТКЕ И ПРЕДСТАВЛЕНИИ ИНФОРМАЦИИ")
-        }
-
-        if indexPath.row == 2 {
-            cell.setup(shortName: "САПР", fullName: "ИНФОРМАЦИОННЫЕ СИСТЕМЫ И ТЕХНОЛОГИИ В ПРОЕКТИРОВАНИИ И ПРОИЗВОДСТВЕ")
-        }
+        guard let specialty = viewModel?.specialties[indexPath.row] else { return UITableViewCell() }
+        cell.setup(shortName: specialty.name, fullName: specialty.secondSubjectName)
         return cell
+    }
+}
+
+extension FacultyDescriptionView: FacultyDescriptionViewModelDelegate {
+    func specialtiesFetched() {
+        specialtyTableView.reloadData()
     }
 }

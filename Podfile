@@ -8,6 +8,7 @@ target 'BTests' do
   pod 'RxCocoa', '5.1.1'
   pod 'R.swift', '5.1.0'
   pod "UPCarouselFlowLayout"
+  pod 'Moya/RxSwift', '~> 14.0'
 
 target 'BTestsTests' do
   inherit! :search_paths

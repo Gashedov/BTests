@@ -15,6 +15,8 @@ class SpecialtyDescriptionView: UIViewController {
     private let fullNameLabel = UILabel()
     private let descriptionLabel = UILabel()
 
+    var viewModel: SpecialtyDescriptionViewModel?
+
     //MARK: - Life cucle methods
     override func loadView() {
         view = UIView()
