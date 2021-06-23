@@ -95,7 +95,7 @@ extension MainScreenView: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.openFacultyDescription()
+        viewModel?.openFacultyDescription(forItemAt: indexPath.row)
     }
 }
 

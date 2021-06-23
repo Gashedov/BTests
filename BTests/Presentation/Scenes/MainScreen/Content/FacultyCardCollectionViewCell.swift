@@ -16,7 +16,7 @@ class FacultyCardTableViewCell: UITableViewCell, ReuseIdentifiable {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubview(cardView)
+        contentView.addSubview(cardView)
         cardView.snp.makeConstraints{
             $0.edges.equalToSuperview().inset(50)
         }
@@ -36,12 +36,13 @@ class FacultyCardTableViewCell: UITableViewCell, ReuseIdentifiable {
         fullFacultyNameLabel.snp.makeConstraints {
             $0.top.equalTo(cardViewHeader.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(10)
+            $0.height.equalTo(50)
         }
 
         cardView.addSubview(facultyDescriptionLabel)
         facultyDescriptionLabel.snp.makeConstraints {
             $0.top.equalTo(fullFacultyNameLabel.snp.bottom).offset(20)
-            $0.leading.trailing.bottom.equalToSuperview().inset(10)
+            $0.leading.trailing.equalToSuperview().inset(10)
         }
 
         backgroundColor = .clear

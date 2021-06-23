@@ -8,8 +8,9 @@
 import UIKit
 
 protocol SpecialtyDescriptionBuilder {
-    func build() -> UIViewController
+    func build(with: SpecialtyData) -> UIViewController 
 }
 
 protocol SpecialtyDescriptionViewModel {
+    func fetchSpecialty() -> Specialty
 }

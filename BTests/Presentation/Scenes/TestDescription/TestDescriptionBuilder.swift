@@ -8,11 +8,14 @@
 import UIKit
 
 class TestDescriptionBuilderImpl: TestDescriptionBuilder {
-    func build() -> UIViewController {
+    func build(with test: TestData) -> UIViewController {
         let view = TestDescriptionView()
 
         let router = TestDescriptionRouterImpl(view: view)
-        let viewModel = TestDescriptionViewModelImpl(router: router)
+        let viewModel = TestDescriptionViewModelImpl(
+            router: router,
+            testData: test
+        )
         view.viewModel = viewModel
 
         return view

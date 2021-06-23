@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 protocol FacultyDescriptionRouter: AnyObject {
-    func pushSpecialtyDescription()
+    func pushSpecialtyDescription(with: SpecialtyData)
 }
 
 protocol FacultyDescriptionBuilder {
@@ -24,7 +24,7 @@ protocol FacultyDescriptionViewModel {
 
     func fetchSpecialties()
     func fetchFuculty() -> Faculty
-    func openSpecialtyView()
+    func openSpecialtyView(at index: Int)
 }
 
 protocol FacultyDescriptionViewModelDelegate: AnyObject {

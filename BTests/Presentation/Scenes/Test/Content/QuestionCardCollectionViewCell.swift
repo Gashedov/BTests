@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol QuestionCardCollectionViewCellDelegate: AnyObject {
+    func anwerSelected(withNumber: Int, andQuestionNumber: Int)
+}
+
 class QuestionCardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
     private let cardView = UIView()
     private let questionLabel = UILabel()
     private let answersStackView = UIStackView()
+
+    weak var delegate: QuestionCardCollectionViewCellDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,15 +70,23 @@ class QuestionCardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
         }
     }
 
-    func setupValues(question: String, answers: [String]) {
+    func setupValues(question: String, answers: [TestAnswer]) {
         questionLabel.text = question
-        answers.forEach {
-            let answerButton = UIButton()
 
-            answerButton.setTitle($0, for: .normal)
+        for index in 0..<answers.count {
+            let answerButton = MultiLineButton()
+
+            answerButton.setTitle(answers[index].title, for: .normal)
             answerButton.setTitleColor(.black, for: .normal)
+            answerButton.tag = index
+
+            answerButton.addTarget(self, action: #selector(answerButtonAction), for: .touchUpInside)
 
             answersStackView.addArrangedSubview(answerButton)
         }
+    }
+
+    @objc func answerButtonAction(_ sender: UIControl) {
+        delegate?.anwerSelected(withNumber: sender.tag, andQuestionNumber: tag)
     }
 }

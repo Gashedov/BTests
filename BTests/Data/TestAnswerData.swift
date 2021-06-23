@@ -11,5 +11,5 @@ struct TestAnswerData: Decodable {
     let id: Int
     let answerText: String
     let membership: String
-    let score: Float
+    let score: Int
 }

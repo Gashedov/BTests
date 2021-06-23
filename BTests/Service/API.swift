@@ -18,7 +18,7 @@ public enum API {
     case generalTest
     case allTests
     case test(byId: String)
-    case testResults
+    case testResults(_: TestResultData)
 }
 
 extension API: TargetType {
@@ -30,25 +30,25 @@ extension API: TargetType {
     public var path: String {
         switch self {
         case .faculty(byId: let id):
-            return "/faculty/\(id)"
+            return "faculty/\(id)"
         case .allFaculties:
             return "faculty/all"
 
         case .specialties(ofFacultyWithId: let facultyId):
-            return "/faculty/\(facultyId)/specialty"
+            return "faculty/\(facultyId)/specialty"
         case .specialty(byId: let id):
-            return "/specialty/\(id)"
+            return "specialty/\(id)"
         case .allSpecialties:
-            return "/specialty/all"
+            return "specialty/all"
 
         case .generalTest:
-            return "/test/general"
+            return "test/general"
         case .allTests:
-            return "/test/all"
+            return "test/all"
         case .test(byId: let id):
-            return "/test/\(id)"
+            return "test/\(id)"
         case .testResults:
-            return "/test/result/add"
+            return "test/result/add"
         }
     }
 
@@ -72,11 +72,8 @@ extension API: TargetType {
 
     var parameters: [String: Any]? {
         switch self {
-//        case .testResults:
-//            return [
-//                "email": email,
-//                "password": password
-//            ]
+        case .testResults(let result):
+            return result.dictionary
         default:
             return nil
         }

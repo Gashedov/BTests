@@ -57,23 +57,24 @@ class SpecialtyDescriptionView: UIViewController {
     }
     
     private func setupUI() {
+        let specialty = viewModel?.fetchSpecialty()
         view.backgroundColor = R.color.elementBackground()
 
         titleLabel.textAlignment = .center
         titleLabel.font = .boldSystemFont(ofSize: 32)
-        titleLabel.text = "ПОИТ"
+        titleLabel.text = specialty?.name
         titleLabel.textColor = .darkGray
 
         fullNameLabel.textAlignment = .center
         fullNameLabel.font = .systemFont(ofSize: 24, weight: .semibold)
         fullNameLabel.numberOfLines = 2
-        fullNameLabel.text = "Программное обеспечение информационных технологий"
+        fullNameLabel.text = specialty?.firstSubjectName
         fullNameLabel.textColor = .darkGray
 
         descriptionLabel.font = .systemFont(ofSize: 24)
         descriptionLabel.backgroundColor = .clear
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textColor = .darkGray
-        descriptionLabel.text = "Направление специальности ориентировано на подготовку программистов, владеющих современными информационными технологиями обработки и представления информации в технике, производстве, социальной сфере. Обучение студентов ведется с учетом новых тенденций развития интегрированных сред, распределенной обработки данных, разработки приложений для мобильных устройств, хранения и доступа к данным на основе востребованных систем управления базами данных. Особое внимание уделяется изучению технологий разработки Internet и Web-приложений, проектированию информационного обеспечения, организации информационно-вычислительных процессов и систем, систем сбора, хранения и обработки текстовой и графической информации."
+        descriptionLabel.text = specialty?.information
     }
 }

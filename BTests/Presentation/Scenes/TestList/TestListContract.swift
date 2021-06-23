@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TestListRouter: AnyObject {
-    func pushTestDescriotion()
+    func pushTestDescriotion(with: TestData)
 }
 
 protocol TestListBuilder {
@@ -20,7 +20,7 @@ protocol TestListViewModel {
     var delegate: TestListViewModelDelegate? { get set }
     
     func fetchItems()
-    func openTestDescription()
+    func openTestDescription(at: Int)
 }
 
 protocol TestListViewModelDelegate: AnyObject {

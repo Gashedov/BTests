@@ -8,13 +8,15 @@
 import UIKit
 
 class TestBuilderImpl: TestBuilder {
-    func build() -> UIViewController {
+    func build(with test: TestData) -> UIViewController {
         let view = TestView()
 
         let router = TestRouterImpl(view: view)
-        let viewModel = TestViewModelImpl(router: router)
+        let viewModel = TestViewModelImpl(
+            router: router,
+            testData: test
+        )
         view.viewModel = viewModel
-
         return view
     }
 }

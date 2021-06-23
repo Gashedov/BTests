@@ -15,6 +15,7 @@ class TestResultRouterImpl: TestResultRouter {
     }
 
     func popToMainScreen() {
+        view.navigationController?.popToRootViewController(animated: true)
     }
 
     func openNextTest() {

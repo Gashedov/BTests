@@ -15,6 +15,10 @@
 		270B1AB02670F84000CD6605 /* TestListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270B1AAF2670F84000CD6605 /* TestListViewModel.swift */; };
 		271579BA262C59B600A152CF /* localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 271579BC262C59B600A152CF /* localizable.strings */; };
 		271746F92612182B003FA54F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271746F82612182B003FA54F /* R.generated.swift */; };
+		272BFD952681E3F900039F80 /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272BFD942681E3F900039F80 /* MultilineButton.swift */; };
+		272BFD972681E97200039F80 /* TestResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272BFD962681E97200039F80 /* TestResultData.swift */; };
+		272BFD992681E9A100039F80 /* StudentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272BFD982681E9A100039F80 /* StudentData.swift */; };
+		2747259626833DF60064FC70 /* Encodable+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747259526833DF60064FC70 /* Encodable+Dictionary.swift */; };
 		274D36C226778ED700EFD5B5 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274D36C126778ED700EFD5B5 /* TestData.swift */; };
 		274D36C426778FE200EFD5B5 /* TestQuestionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274D36C326778FE200EFD5B5 /* TestQuestionData.swift */; };
 		274D36C62677916A00EFD5B5 /* TestAnswerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274D36C52677916A00EFD5B5 /* TestAnswerData.swift */; };
@@ -116,6 +120,10 @@
 		271579C7262C5AB500A152CF /* ru-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ru-BY"; path = "ru-BY.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		271579C8262C5AB600A152CF /* ru-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ru-BY"; path = "ru-BY.lproj/localizable.strings"; sourceTree = "<group>"; };
 		271746F82612182B003FA54F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		272BFD942681E3F900039F80 /* MultilineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineButton.swift; sourceTree = "<group>"; };
+		272BFD962681E97200039F80 /* TestResultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultData.swift; sourceTree = "<group>"; };
+		272BFD982681E9A100039F80 /* StudentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentData.swift; sourceTree = "<group>"; };
+		2747259526833DF60064FC70 /* Encodable+Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Dictionary.swift"; sourceTree = "<group>"; };
 		274D36C126778ED700EFD5B5 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		274D36C326778FE200EFD5B5 /* TestQuestionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestQuestionData.swift; sourceTree = "<group>"; };
 		274D36C52677916A00EFD5B5 /* TestAnswerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAnswerData.swift; sourceTree = "<group>"; };
@@ -254,6 +262,8 @@
 				274D36C326778FE200EFD5B5 /* TestQuestionData.swift */,
 				274D36C52677916A00EFD5B5 /* TestAnswerData.swift */,
 				274D36C72677922700EFD5B5 /* SpecialtyData.swift */,
+				272BFD962681E97200039F80 /* TestResultData.swift */,
+				272BFD982681E9A100039F80 /* StudentData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -355,6 +365,7 @@
 			children = (
 				27712C0B266FB63400D3B504 /* API.swift */,
 				270B1AA22670DB9B00CD6605 /* UserDefaultsStore.swift */,
+				2747259526833DF60064FC70 /* Encodable+Dictionary.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -402,6 +413,7 @@
 				27B1DB2526260E810082D58A /* CardView.swift */,
 				27A3E701263B27A7001509C8 /* TestCardView.swift */,
 				27866407264C6CA100E9988E /* FloatLabeledTextField.swift */,
+				272BFD942681E3F900039F80 /* MultilineButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -769,6 +781,7 @@
 				27F1D19F2678974900EBA0E1 /* MainScreenRouter.swift in Sources */,
 				274D36CC267796C700EFD5B5 /* TestQuestion.swift in Sources */,
 				274D36C82677922700EFD5B5 /* SpecialtyData.swift in Sources */,
+				272BFD992681E9A100039F80 /* StudentData.swift in Sources */,
 				274D36D22677A50500EFD5B5 /* FacultyDescriptionViewModel.swift in Sources */,
 				27B1DB2126260DB20082D58A /* CardStackView.swift in Sources */,
 				274D36C226778ED700EFD5B5 /* TestData.swift in Sources */,
@@ -779,6 +792,7 @@
 				27564AC82610C64900754BA2 /* AppDelegate.swift in Sources */,
 				27FD0458265003D50045ABA6 /* UITableView+Generics.swift in Sources */,
 				27F1D1C12678CC4300EBA0E1 /* FacultDescriptionContract.swift in Sources */,
+				2747259626833DF60064FC70 /* Encodable+Dictionary.swift in Sources */,
 				270B1AAB2670E9D000CD6605 /* SearchTableViewHeader.swift in Sources */,
 				27F1D1B92678CA4200EBA0E1 /* TestResultViewModel.swift in Sources */,
 				27F1D1B52678C77000EBA0E1 /* TestBuilder.swift in Sources */,
@@ -823,9 +837,11 @@
 				27F1D1B12678C75500EBA0E1 /* TestViewModel.swift in Sources */,
 				27CD677826637E6200462426 /* GradientedView.swift in Sources */,
 				27F1D19B267895DB00EBA0E1 /* MainScreenContract.swift in Sources */,
+				272BFD972681E97200039F80 /* TestResultData.swift in Sources */,
 				27F1D1A226789A3B00EBA0E1 /* TestListContract.swift in Sources */,
 				270B1AA92670E2E200CD6605 /* Faculty.swift in Sources */,
 				27A3E702263B27A7001509C8 /* TestCardView.swift in Sources */,
+				272BFD952681E3F900039F80 /* MultilineButton.swift in Sources */,
 				27F633B22652C11D0009CB05 /* SpecialtyDescriptionView.swift in Sources */,
 				27F1D1B72678C78C00EBA0E1 /* TestRouter.swift in Sources */,
 				27C4BEC52645695200618282 /* TestResultView.swift in Sources */,

@@ -13,9 +13,9 @@ class TestListRouterImpl: TestListRouter {
     init(view: UIViewController) {
         self.view = view
     }
-    func pushTestDescriotion() {
+    func pushTestDescriotion(with test: TestData) {
         let builder = TestDescriptionBuilderImpl()
-        let testDescriptionView = builder.build()
+        let testDescriptionView = builder.build(with: test)
         view.navigationController?.pushViewController(testDescriptionView, animated: true)
     }
 }

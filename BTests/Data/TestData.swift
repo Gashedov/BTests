@@ -8,7 +8,7 @@
 import Foundation
 
 struct TestData: Decodable {
-    let facultyId: Int
+    let facultyId: Int?
     let id: Int
     let questions: [TestQuestionData]
     let testType: String

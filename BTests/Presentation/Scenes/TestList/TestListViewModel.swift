@@ -11,16 +11,19 @@ class TestListViewModelImpl: TestListViewModel {
     private let apiProvider = MoyaProvider<API>()
     private let router: TestListRouter
 
-    init(router: TestListRouter) {
-        self.router = router
-    }
+    private var testsData: [TestData] = []
 
     var items: [Test] = []
 
     weak var delegate: TestListViewModelDelegate?
 
-    func openTestDescription() {
-        router.pushTestDescriotion()
+    init(router: TestListRouter) {
+        self.router = router
+    }
+
+    func openTestDescription(at index: Int)  {
+        guard index >= 0, index < testsData.count else { return }
+        router.pushTestDescriotion(with: testsData[index])
     }
 
     func fetchItems() {
@@ -35,6 +38,8 @@ class TestListViewModelImpl: TestListViewModel {
                 guard let info = try? JSONDecoder().decode([TestData].self, from: responce.data) else {
                     return
                 }
+
+                self.testsData = info
 
                 self.items = info.map {
                     let questions = $0.questions.map { question -> TestQuestion in

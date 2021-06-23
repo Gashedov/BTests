@@ -10,12 +10,10 @@ import Foundation
 import UIKit
 
 class SpecialtyDescriptionBuilderImpl: SpecialtyDescriptionBuilder {
-    func build() -> UIViewController {
+    func build(with specialty: SpecialtyData) -> UIViewController {
         let view = SpecialtyDescriptionView()
-
-        let viewModel = SpecialtyDescriptionViewModelImpl()
+        let viewModel = SpecialtyDescriptionViewModelImpl(specialty: specialty)
         view.viewModel = viewModel
-
         return view
     }
 }

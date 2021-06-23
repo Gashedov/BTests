@@ -72,7 +72,7 @@ class WelcomeScreenViewController: UIViewController {
     }
 
     @objc private func openNext() {
-        let authorizationView = AuthorizationView()
+        let authorizationView = AuthorizationBuilderImpl().build()
         authorizationView.isModalInPresentation = true
         authorizationView.modalPresentationStyle = .fullScreen
         present(authorizationView, animated: true)

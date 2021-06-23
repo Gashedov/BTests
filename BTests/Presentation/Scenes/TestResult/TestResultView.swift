@@ -100,6 +100,7 @@ class TestResultView: UIViewController {
         nextButton.addTarget(self, action: #selector(openNext), for: .touchUpInside)
         nextButton.backgroundColor = R.color.elementTint()
         nextButton.layer.cornerRadius = 16
+        nextButton.isHidden = true
 
         menuButton.setTitle("Назад в меню", for: .normal)
         menuButton.setTitleColor(.black, for: .normal)

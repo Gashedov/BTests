@@ -8,13 +8,14 @@
 import UIKit
 
 protocol TestDescriptionRouter: AnyObject {
-    func pushTest()
+    func pushTest(with: TestData)
 }
 
 protocol TestDescriptionBuilder {
-    func build() -> UIViewController
+    func build(with: TestData) -> UIViewController
 }
 
 protocol TestDescriptionViewModel {
+    var test: Test { get }
     func openTest()
 }

@@ -53,7 +53,7 @@ class TestCardView: UIView {
         layer.cornerRadius = 20
     }
 
-    func setupValues(question: String, answers: [String]) {
+    func setupValues(question: String, answers: [TestAnswer]) {
         questionLabel.text = question
         answers.forEach {
             let answerView = UIView()
@@ -69,7 +69,7 @@ class TestCardView: UIView {
 
             answerLabel.textAlignment = .left
             answerLabel.font = .systemFont(ofSize: 12)
-            answerLabel.text = $0
+            answerLabel.text = $0.title
 
             answersStackView.addArrangedSubview(answerLabel)
         }

@@ -12,15 +12,16 @@ protocol TestRouter: AnyObject {
 }
 
 protocol TestBuilder {
-    func build() -> UIViewController
+    func build(with: TestData) -> UIViewController
 }
 
 protocol TestViewModel {
     var items: [TestQuestion] { get }
     var delegate: TestViewModelDelegate? { get set }
 
-    func fetchItems()
     func openTestResults()
+    func addAnswer(withNumber: Int, andQuestionNumber: Int)
+    func completeTest()
 }
 
 protocol TestViewModelDelegate: AnyObject {

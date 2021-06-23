@@ -216,7 +216,7 @@ class FacultyDescriptionView: UIViewController {
 
 extension FacultyDescriptionView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.openSpecialtyView()
+        viewModel?.openSpecialtyView(at: indexPath.row)
     }
 }
 

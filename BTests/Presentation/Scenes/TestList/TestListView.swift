@@ -61,7 +61,7 @@ class TestListView: UIViewController {
 
 extension TestListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.openTestDescription()
+        viewModel?.openTestDescription(at: indexPath.row)
     }
 }
 
@@ -82,5 +82,4 @@ extension TestListView: TestListViewModelDelegate {
     func itemsFetched() {
         tableView.reloadData()
     }
-
 }

@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 protocol MainScreenRouter: AnyObject {
-    func pushFacultyDescription()
+    func pushFacultyDescription(for : FacultyData)
     func pushTestList()
 }
 
@@ -25,7 +25,7 @@ protocol MainScreenViewModel {
     
     func fetchItems()
     func openTestList()
-    func openFacultyDescription()
+    func openFacultyDescription(forItemAt: Int)
 }
 
 protocol MainScreenViewModelDelegate: AnyObject {

@@ -7,8 +7,6 @@
 
 import UIKit
 import UPCarouselFlowLayout
-import RxSwift
-import RxCocoa
 
 class TestView: UIViewController {
     // MARK: - Properties
@@ -24,7 +22,11 @@ class TestView: UIViewController {
         collectionViewLayout: UPCarouselFlowLayout()
     )
 
-    private let disposeBag = DisposeBag()
+    private var numberOfQuestionsAnswered = 0 {
+        willSet {
+            progressCounterLabel.text = "\(newValue)/\(viewModel?.items.count ?? 0)"
+        }
+    }
 
     // MARK: - Life cucle methods
     override func loadView() {
@@ -83,7 +85,7 @@ class TestView: UIViewController {
         progressLine.backgroundColor = R.color.elementTint()
         progressLineInficator.backgroundColor = .red
 
-        progressCounterLabel.text = "0/3"
+        progressCounterLabel.text = "0/\(viewModel?.items.count ?? 0)"
 
         cardCollectionView.backgroundColor = .clear
         cardCollectionView.delegate = self
@@ -99,7 +101,7 @@ class TestView: UIViewController {
     }
 
     @objc private func completeTest() {
-        viewModel?.openTestResults()
+        viewModel?.completeTest()
     }
 }
 
@@ -109,19 +111,21 @@ extension TestView: UICollectionViewDelegate {
 
 extension TestView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return (viewModel?.items.count ?? 0) + 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        if indexPath.item == 3 {
+        if indexPath.item == viewModel?.items.count {
             let cell: LastCardCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.resultButton.addTarget(self, action: #selector(completeTest), for: .touchUpInside)
             return cell
         }
         let cell: QuestionCardCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.setupValues(question: "Увлекались ли вы когда нибудь электроникой или робототехникой?",
-                         answers: ["да", "нет", "нет, но было бы интересно"])
+        guard let item = viewModel?.items[indexPath.item] else { return UICollectionViewCell() }
+        cell.setupValues(question: item.description, answers: item.answers)
+        
+        cell.tag = indexPath.row
+        cell.delegate = self
         return cell
     }
 }
@@ -175,5 +179,11 @@ extension TestView: UIScrollViewDelegate {
         UIView.animate(withDuration: 0.01) {
             self.progressLineInficator.center.x = self.progressLine.frame.width*percentageOfFullWidth
         }
+    }
+}
+
+extension TestView: QuestionCardCollectionViewCellDelegate {
+    func anwerSelected(withNumber answerNumber: Int, andQuestionNumber questionNumber: Int) {
+        viewModel?.addAnswer(withNumber: answerNumber, andQuestionNumber: questionNumber)
     }
 }

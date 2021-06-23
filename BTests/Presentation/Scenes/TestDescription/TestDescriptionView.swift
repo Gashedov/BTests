@@ -87,7 +87,7 @@ class TestDescriptionView: UIViewController {
         backgroundView.backgroundColor = .lightGray
 
         titleLabel.font = .boldSystemFont(ofSize: 24)
-        titleLabel.text = "ТЕСТ: какой факультет мне подходит "
+        titleLabel.text = viewModel?.test.testName
         titleLabel.numberOfLines = 2
         titleLabel.textAlignment = .center
 

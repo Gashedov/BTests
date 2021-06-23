@@ -14,7 +14,8 @@ class FacultyDescriptionRouterImpl: FacultyDescriptionRouter {
         self.view = view
     }
 
-    func pushSpecialtyDescription() {
-
+    func pushSpecialtyDescription(with specialty: SpecialtyData) {
+        let specialtyView = SpecialtyDescriptionBuilderImpl().build(with: specialty)
+        view.navigationController?.pushViewController(specialtyView, animated: true)
     }
 }

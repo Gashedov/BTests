@@ -13,6 +13,7 @@ class FacultyDescriptionViewModelImpl: FacultyDescriptionViewModel {
 
     private let facultyData: FacultyData
     var specialties: [Specialty] = []
+    private var specialtiesData: [SpecialtyData] = []
 
     weak var delegate: FacultyDescriptionViewModelDelegate?
 
@@ -38,6 +39,7 @@ class FacultyDescriptionViewModelImpl: FacultyDescriptionViewModel {
                     return
                 }
 
+                self.specialtiesData = info
                 self.specialties = info.map {
                     return Specialty(
                         facultyName: $0.facultyName,
@@ -65,7 +67,9 @@ class FacultyDescriptionViewModelImpl: FacultyDescriptionViewModel {
         )
     }
 
-    func openSpecialtyView() {
-        router.pushSpecialtyDescription()
+    func openSpecialtyView(at index: Int) {
+        guard index >= 0, index < specialtiesData.count else { return }
+        let specialty = specialtiesData[index]
+        router.pushSpecialtyDescription(with: specialty)
     }
 }

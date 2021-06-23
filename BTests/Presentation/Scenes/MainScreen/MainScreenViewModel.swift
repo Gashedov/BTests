@@ -7,14 +7,13 @@
 
 import Moya
 
-
-
 class MainScreenViewModelImpl: MainScreenViewModel {
     // TODO: implement dependency injection
     private let apiProvider = MoyaProvider<API>()
     private let router: MainScreenRouter
 
     var items: [Faculty] = []
+    private var facultiesData: [FacultyData] = []
 
     weak var delegate: MainScreenViewModelDelegate?
 
@@ -26,8 +25,10 @@ class MainScreenViewModelImpl: MainScreenViewModel {
         router.pushTestList()
     }
 
-    func openFacultyDescription() {
-        router.pushFacultyDescription()
+    func openFacultyDescription(forItemAt index: Int) {
+        guard index >= 0, index < facultiesData.count else { return }
+        let faculty = facultiesData[index]
+        router.pushFacultyDescription(for: faculty)
     }
 
     func fetchItems() {
@@ -42,6 +43,7 @@ class MainScreenViewModelImpl: MainScreenViewModel {
                     print(JSONString)
                 }
 
+                self.facultiesData = info
                 self.items = info.map {
                     Faculty(name: $0.name, fullName: $0.fullName, description: $0.information)
                 }

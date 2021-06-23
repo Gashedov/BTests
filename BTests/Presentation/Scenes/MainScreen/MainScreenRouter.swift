@@ -14,8 +14,10 @@ class MainScreenRouterImpl: MainScreenRouter {
         self.view = view
     }
     
-    func pushFacultyDescription() {
-        
+    func pushFacultyDescription(for faculty: FacultyData) {
+        let facultyDescriptionView = FacultyDescriptionBuilderImpl()
+            .build(withFaculty: faculty)
+        view.navigationController?.pushViewController(facultyDescriptionView, animated: true)
     }
 
     func pushTestList() {
