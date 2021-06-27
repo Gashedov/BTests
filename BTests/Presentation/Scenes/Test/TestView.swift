@@ -184,6 +184,12 @@ extension TestView: UIScrollViewDelegate {
 
 extension TestView: QuestionCardCollectionViewCellDelegate {
     func anwerSelected(withNumber answerNumber: Int, andQuestionNumber questionNumber: Int) {
+        numberOfQuestionsAnswered += 1
+        cardCollectionView.scrollToItem(
+            at: IndexPath(item: questionNumber+1, section: 0),
+            at: .centeredHorizontally,
+            animated: true
+        )
         viewModel?.addAnswer(withNumber: answerNumber, andQuestionNumber: questionNumber)
     }
 }

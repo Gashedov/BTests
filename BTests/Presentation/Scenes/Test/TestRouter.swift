@@ -13,9 +13,14 @@ class TestRouterImpl: TestRouter {
     init(view: UIViewController) {
         self.view = view
     }
-    func pushTestResult() {
+    
+    func pushTestResult(with data: TestResponseData) {
         let builder = TestResultBuilderImpl()
-        let testResultsView = builder.build()
+        let testResultsView = builder.build(with: data)
         view.navigationController?.pushViewController(testResultsView, animated: true)
+    }
+
+    func popToMainScreen() {
+        view.navigationController?.popToRootViewController(animated: true)
     }
 }

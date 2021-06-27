@@ -19,3 +19,10 @@
 "Confirm" = "Подтвердить";
 "Skip" = "Пропустить";
 "ContactDetails" = "Контактные данные";
+"FindYourself" = "Найди себя";
+"ByTestResuls" = "По результатам теста вам больше всего подходит:";
+"CompleteTest" = "Завершить тест";
+"Start" = "НАЧАТЬ";
+"NextTest" = "Следующий тест";
+"BackToMenu" = "Назад в меню";
+"UndefinedResult" = "Не определено";

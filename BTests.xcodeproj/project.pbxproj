@@ -35,6 +35,7 @@
 		27564AD42610C64A00754BA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27564AD22610C64A00754BA2 /* LaunchScreen.storyboard */; };
 		27564ADF2610C64A00754BA2 /* BTestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27564ADE2610C64A00754BA2 /* BTestsTests.swift */; };
 		27564AEA2610C64A00754BA2 /* BTestsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27564AE92610C64A00754BA2 /* BTestsUITests.swift */; };
+		276FDECB26847FDC0071AA36 /* TestResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FDECA26847FDC0071AA36 /* TestResponseData.swift */; };
 		27712C0C266FB63400D3B504 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27712C0B266FB63400D3B504 /* API.swift */; };
 		27866408264C6CA100E9988E /* FloatLabeledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27866407264C6CA100E9988E /* FloatLabeledTextField.swift */; };
 		278B16DD26593AF600431FFF /* SpecialtyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278B16DC26593AF600431FFF /* SpecialtyTableViewCell.swift */; };
@@ -45,6 +46,7 @@
 		27AC78C3264936B200B769BA /* UICollectionView+Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC78C2264936B200B769BA /* UICollectionView+Generics.swift */; };
 		27B1DB2126260DB20082D58A /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B1DB2026260DB20082D58A /* CardStackView.swift */; };
 		27B1DB2626260E810082D58A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B1DB2526260E810082D58A /* CardView.swift */; };
+		27C471C82688E3B700B71BC6 /* String+IsHollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C471C72688E3B700B71BC6 /* String+IsHollow.swift */; };
 		27C4BEC52645695200618282 /* TestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4BEC42645695200618282 /* TestResultView.swift */; };
 		27CD677826637E6200462426 /* GradientedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CD677726637E6200462426 /* GradientedView.swift */; };
 		27DD0423264983CA00E9C265 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD0422264983CA00E9C265 /* AuthorizationView.swift */; };
@@ -146,6 +148,7 @@
 		27564AE52610C64A00754BA2 /* BTestsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTestsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27564AE92610C64A00754BA2 /* BTestsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTestsUITests.swift; sourceTree = "<group>"; };
 		27564AEB2610C64A00754BA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		276FDECA26847FDC0071AA36 /* TestResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponseData.swift; sourceTree = "<group>"; };
 		27712C0B266FB63400D3B504 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		27866407264C6CA100E9988E /* FloatLabeledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabeledTextField.swift; sourceTree = "<group>"; };
 		278B16DC26593AF600431FFF /* SpecialtyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyTableViewCell.swift; sourceTree = "<group>"; };
@@ -156,6 +159,7 @@
 		27AC78C2264936B200B769BA /* UICollectionView+Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Generics.swift"; sourceTree = "<group>"; };
 		27B1DB2026260DB20082D58A /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		27B1DB2526260E810082D58A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		27C471C72688E3B700B71BC6 /* String+IsHollow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+IsHollow.swift"; sourceTree = "<group>"; };
 		27C4BEC42645695200618282 /* TestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultView.swift; sourceTree = "<group>"; };
 		27CD677726637E6200462426 /* GradientedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientedView.swift; sourceTree = "<group>"; };
 		27DD0422264983CA00E9C265 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 				274D36C72677922700EFD5B5 /* SpecialtyData.swift */,
 				272BFD962681E97200039F80 /* TestResultData.swift */,
 				272BFD982681E9A100039F80 /* StudentData.swift */,
+				276FDECA26847FDC0071AA36 /* TestResponseData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				27712C0B266FB63400D3B504 /* API.swift */,
 				270B1AA22670DB9B00CD6605 /* UserDefaultsStore.swift */,
 				2747259526833DF60064FC70 /* Encodable+Dictionary.swift */,
+				27C471C72688E3B700B71BC6 /* String+IsHollow.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -783,6 +789,7 @@
 				274D36C82677922700EFD5B5 /* SpecialtyData.swift in Sources */,
 				272BFD992681E9A100039F80 /* StudentData.swift in Sources */,
 				274D36D22677A50500EFD5B5 /* FacultyDescriptionViewModel.swift in Sources */,
+				276FDECB26847FDC0071AA36 /* TestResponseData.swift in Sources */,
 				27B1DB2126260DB20082D58A /* CardStackView.swift in Sources */,
 				274D36C226778ED700EFD5B5 /* TestData.swift in Sources */,
 				27F1D1BF2678CA6700EBA0E1 /* TestResultRouter.swift in Sources */,
@@ -813,6 +820,7 @@
 				27F1D1982677EC5600EBA0E1 /* AuthorizationRouter.swift in Sources */,
 				27FD0454264FFD7E0045ABA6 /* TestListView.swift in Sources */,
 				270B1AAE2670EDB600CD6605 /* FacultyData.swift in Sources */,
+				27C471C82688E3B700B71BC6 /* String+IsHollow.swift in Sources */,
 				27F1D1A82678C4A800EBA0E1 /* TestDescriptionBuilder.swift in Sources */,
 				27FD0456264FFF860045ABA6 /* TestTableViewCell.swift in Sources */,
 				270B1AA52670E0AF00CD6605 /* MainScreenViewModel.swift in Sources */,

@@ -60,11 +60,9 @@ class FacultyCardTableViewCell: UITableViewCell, ReuseIdentifiable {
 
         facultyNameLabel.textAlignment = .center
         facultyNameLabel.font = .systemFont(ofSize: 22, weight: .semibold)
-        facultyNameLabel.text = "FName"
 
         fullFacultyNameLabel.textAlignment = .center
         fullFacultyNameLabel.font = .systemFont(ofSize: 12, weight: .light)
-        fullFacultyNameLabel.text = "Long and full name of a faculty with all details"
         fullFacultyNameLabel.numberOfLines = 2
 
         facultyDescriptionLabel.font = .systemFont(ofSize: 14)

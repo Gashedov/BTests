@@ -81,28 +81,27 @@ class TestResultView: UIViewController {
         view.backgroundColor = R.color.elementBackground()
 
         resultTitle.font = .systemFont(ofSize: 24)
-        resultTitle.text = "По результатам теста вам больше всего подходит:"
+        resultTitle.text = R.string.localizable.byTestResuls()
         resultTitle.textAlignment = .center
         resultTitle.numberOfLines = 2
 
         resultLabel.font = .boldSystemFont(ofSize: 24)
-        resultLabel.text = "ФИТР"
+        resultLabel.text = viewModel?.getResultTitle()
         resultLabel.textAlignment = .center
 
-        infoButton.setImage(R.image.about(), for: .normal)
         infoButton.layer.cornerRadius = 30
         infoButton.contentVerticalAlignment = .fill
         infoButton.contentHorizontalAlignment = .fill
         infoButton.tintColor = R.color.elementTint()
 
-        nextButton.setTitle("Следующий тест", for: .normal)
+        nextButton.setTitle(R.string.localizable.nextTest(), for: .normal)
         nextButton.setTitleColor(.black, for: .normal)
         nextButton.addTarget(self, action: #selector(openNext), for: .touchUpInside)
         nextButton.backgroundColor = R.color.elementTint()
         nextButton.layer.cornerRadius = 16
         nextButton.isHidden = true
 
-        menuButton.setTitle("Назад в меню", for: .normal)
+        menuButton.setTitle(R.string.localizable.backToMenu(), for: .normal)
         menuButton.setTitleColor(.black, for: .normal)
         menuButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
         menuButton.backgroundColor = R.color.elementTint()

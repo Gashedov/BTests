@@ -13,10 +13,11 @@ protocol TestResultRouter: AnyObject {
 }
 
 protocol TestResultBuilder {
-    func build() -> UIViewController
+    func build(with: TestResponseData) -> UIViewController
 }
 
 protocol TestResultViewModel {
+    func getResultTitle() -> String
     func goToMainScreen()
     func openNextTest()
 }

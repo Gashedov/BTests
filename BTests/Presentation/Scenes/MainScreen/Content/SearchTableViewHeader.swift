@@ -51,7 +51,7 @@ class SearchTableViewHeader: UITableViewHeaderFooterView, ReuseIdentifiable {
 
         titleLabel.textAlignment = .center
         titleLabel.font = .systemFont(ofSize: 22, weight: .semibold)
-        titleLabel.text = "Найди себя"
+        titleLabel.text = R.string.localizable.findYourself()
 
         searchBarContainer.backgroundColor = .white
         searchBarContainer.layer.cornerRadius = 20

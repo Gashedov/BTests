@@ -14,7 +14,7 @@ class TestViewModelImpl: TestViewModel {
     private let testData: TestData
     private var answers: [TestAnswerData] = []
 
-    let items: [TestQuestion]
+    var items: [TestQuestion]
 
     var delegate: TestViewModelDelegate?
 
@@ -28,12 +28,20 @@ class TestViewModelImpl: TestViewModel {
             let answers = question.answers.map {
                 return TestAnswer(title: $0.answerText)
             }
-            return TestQuestion(answers: answers, description: question.questionText, type: question.questionType)
+            return TestQuestion(
+                answers: answers,
+                description: question.questionText,
+                type: question.questionType
+            )
         }
     }
 
-    func openTestResults() {
-        router.pushTestResult()
+    func openTestResults(with data: TestResponseData) {
+        router.pushTestResult(with: data)
+    }
+
+    func backToMenu() {
+        router.popToMainScreen()
     }
 
     func completeTest() {
@@ -60,16 +68,17 @@ class TestViewModelImpl: TestViewModel {
                     print(JSONString)
                 }
                 
-                guard let info = try? JSONDecoder().decode([FacultyData].self, from: responce.data) else {
+                guard let info = try? JSONDecoder().decode(TestResponseData.self, from: responce.data) else {
                     return
                 }
 
+                self.openTestResults(with: info)
+
             case .failure(let error):
                 print(error)
+                self.backToMenu()
             }
         }
-
-        self.openTestResults()
     }
 
 
@@ -79,6 +88,8 @@ class TestViewModelImpl: TestViewModel {
 
         guard answerNumber >= 0, answerNumber < questionData.answers.count else { return }
         let answer = questionData.answers[answerNumber]
+
+        items[questionNumber].answers[answerNumber].isSelected = true
         answers.append(answer)
     }
 }

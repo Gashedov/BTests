@@ -30,7 +30,6 @@ class TestCardView: UIView {
 
         questionLabel.textAlignment = .center
         questionLabel.font = .systemFont(ofSize: 22, weight: .semibold)
-        questionLabel.text = "Qestion text"
         questionLabel.numberOfLines = 0
 
         answersStackView.layer.cornerRadius = 10

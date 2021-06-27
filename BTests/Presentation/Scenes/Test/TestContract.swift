@@ -8,7 +8,8 @@
 import UIKit
 
 protocol TestRouter: AnyObject {
-    func pushTestResult()
+    func pushTestResult(with: TestResponseData)
+    func popToMainScreen()
 }
 
 protocol TestBuilder {
@@ -19,7 +20,7 @@ protocol TestViewModel {
     var items: [TestQuestion] { get }
     var delegate: TestViewModelDelegate? { get set }
 
-    func openTestResults()
+    func openTestResults(with: TestResponseData)
     func addAnswer(withNumber: Int, andQuestionNumber: Int)
     func completeTest()
 }

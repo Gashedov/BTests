@@ -8,7 +8,7 @@
 import Foundation
 
 struct TestQuestion {
-    let answers: [TestAnswer]
+    var answers: [TestAnswer]
     let description: String
     let type: Int
 }

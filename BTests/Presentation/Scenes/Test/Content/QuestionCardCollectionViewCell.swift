@@ -47,15 +47,15 @@ class QuestionCardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
 
         questionLabel.textAlignment = .center
         questionLabel.font = .systemFont(ofSize: 22, weight: .semibold)
-        questionLabel.text = "Qestion text"
         questionLabel.numberOfLines = 0
 
         answersStackView.layer.cornerRadius = 10
         answersStackView.backgroundColor = R.color.elementBackground()
         answersStackView.axis = .vertical
         answersStackView.distribution = .fillEqually
-        answersStackView.alignment = .leading
+        answersStackView.alignment = .fill
         answersStackView.spacing = 16.0
+
     }
 
     required init?(coder: NSCoder) {
@@ -64,6 +64,7 @@ class QuestionCardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        isUserInteractionEnabled = true
 
         answersStackView.arrangedSubviews.forEach {
             $0.removeFromSuperview()
@@ -79,14 +80,22 @@ class QuestionCardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
             answerButton.setTitle(answers[index].title, for: .normal)
             answerButton.setTitleColor(.black, for: .normal)
             answerButton.tag = index
+            answerButton.layer.cornerRadius = 10
 
             answerButton.addTarget(self, action: #selector(answerButtonAction), for: .touchUpInside)
+
+            if answers[index].isSelected {
+                answerButton.backgroundColor = R.color.primaryColor()
+                isUserInteractionEnabled = false
+            }
 
             answersStackView.addArrangedSubview(answerButton)
         }
     }
 
     @objc func answerButtonAction(_ sender: UIControl) {
+        sender.backgroundColor = R.color.primaryColor()
+        isUserInteractionEnabled = false
         delegate?.anwerSelected(withNumber: sender.tag, andQuestionNumber: tag)
     }
 }

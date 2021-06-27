@@ -19,3 +19,10 @@
 "Confirm" = "Confirm";
 "Skip" = "Skip";
 "ContactDetails" = "Contact details";
+"FindYourself" = "Find yourself";
+"ByTestResuls" = "Based on the test results, it suits you best:";
+"CompleteTest" = "Complete test";
+"Start" = "Start";
+"NextTest" = "Next test";
+"BackToMenu" = "Back to menu";
+"UndefinedResult" = "Result is undefined";

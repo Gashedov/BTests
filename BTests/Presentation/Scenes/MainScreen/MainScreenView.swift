@@ -68,9 +68,8 @@ class MainScreenView: UIViewController {
         cardTableView.dataSource = self
         cardTableView.showsHorizontalScrollIndicator = false
         cardTableView.register(FacultyCardTableViewCell.self)
-        cardTableView.registerHeaderFooter(SearchTableViewHeader.self)
 
-        testButton.setTitle("Тест", for: .normal)
+        testButton.setTitle(R.string.localizable.test(), for: .normal)
         testButton.backgroundColor = R.color.minorColor()
         testButton.addTarget(self, action: #selector(openTest), for: .touchUpInside)
     }
@@ -81,14 +80,6 @@ class MainScreenView: UIViewController {
 }
 
 extension MainScreenView: UITableViewDelegate {
-    func tableView(
-        _ tableView: UITableView,
-        viewForHeaderInSection section: Int
-    ) -> UIView? {
-        let header: SearchTableViewHeader = tableView.dequeueReusableHeaderFooterView()
-        header.searchDelegate = self
-        return header
-    }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 240

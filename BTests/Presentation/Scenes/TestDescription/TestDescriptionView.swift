@@ -92,10 +92,10 @@ class TestDescriptionView: UIViewController {
         titleLabel.textAlignment = .center
 
         descriptionLabel.font = .systemFont(ofSize: 14)
-        descriptionLabel.text = "Этот тест содержит вопросы, ответив на который система сможет определить предрасположенность к определенному типу деятельности и, более того, поможет определиться с факультетом БНТУ"
+        //descriptionLabel.text = viewModel?.test.description
         descriptionLabel.numberOfLines = 0
 
-        goButton.setTitle("НАЧАТЬ", for: .normal)
+        goButton.setTitle(R.string.localizable.start(), for: .normal)
         goButton.addTarget(self, action: #selector(openTest), for: .touchUpInside)
         goButton.layer.cornerRadius = 20
         goButton.backgroundColor = R.color.elementTint()

@@ -42,9 +42,9 @@ class LastCardCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
         resultTitle.textAlignment = .center
         resultTitle.numberOfLines = 2
         resultTitle.font = .systemFont(ofSize: 22, weight: .semibold)
-        resultTitle.text = "Завершить тест" //R.string.localizable.completeTest()
+        resultTitle.text = R.string.localizable.completeTest()
 
-        resultButton.setTitle("ЗАВЕРШИТЬ", for: .normal)
+        resultButton.setTitle(R.string.localizable.completeTest(), for: .normal)
     }
 
     required init?(coder: NSCoder) {
